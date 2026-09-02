@@ -67,7 +67,7 @@ body.dark .prog{background:#f4f1ec}
 <body class="dark">
 <div class="prog" id="prog"></div>
 <img class="logo" src="assets/monogram-black.png" alt="EBS">
-<div class="back"><button onclick="voltar()" aria-label="Voltar">↑</button></div>
+<div class="back" style="display:none"><button onclick="voltar()" aria-label="Voltar">↑</button></div>
 
 <div class="stage">
 
@@ -249,6 +249,7 @@ function go(id){
   document.getElementById('prog').style.width=Math.min(100,Math.round(hist.length/TOTAL*100))+'%';
   if(id.startsWith('fim'))document.getElementById('prog').style.width='100%';
   document.body.classList.toggle('dark',DARK.includes(id));
+  document.querySelector('.back').style.display=(id==='inicio'||id.startsWith('fim'))?'none':'flex';
 }
 function voltar(){if(hist.length<2)return;hist.pop();const id=hist.pop();go(id)}
 function next(){
