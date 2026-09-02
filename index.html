@@ -24,6 +24,10 @@ h1{font-size:clamp(30px,5.5vw,44px)}
 h2{font-size:clamp(24px,4.5vw,34px)}
 h1 em,h2 em{font-style:italic}
 p.d{margin-top:14px;color:var(--soft);font-size:clamp(15px,2.5vw,17px)}
+p.intro{margin-top:14px;color:var(--muted);font-size:clamp(13.5px,2.2vw,15px);line-height:1.65;max-width:540px}
+body.dark p.intro{color:rgba(244,241,236,.65)}
+.mono-fim{height:56px;margin-bottom:26px;display:block}
+body.dark .mono-fim{filter:invert(1)}
 input[type=text],input[type=email],input[type=tel]{width:100%;border:0;border-bottom:2px solid var(--line);padding:12px 2px;font-size:clamp(20px,3.5vw,26px);font-family:var(--sans);color:var(--ink);background:none;border-radius:0;margin-top:30px}
 input:focus{outline:none;border-bottom-color:var(--ink)}
 textarea{width:100%;border:0;border-bottom:2px solid var(--line);padding:12px 2px;font-size:clamp(18px,3vw,22px);font-family:var(--sans);color:var(--ink);min-height:76px;margin-top:30px;border-radius:0;resize:none}
@@ -135,8 +139,10 @@ body.dark .prog{background:#f4f1ec}
 </section>
 
 <section class="step" data-id="a4">
-  <p class="d" style="margin-top:0">O primeiro passo para Viver de Eventos é tornares-te profissional, para que possas entregar um trabalho de qualidade que te vai permitir atrair interessados. Mas só isso não chega. Se queres mesmo viver de eventos, para poderes fazer o que gostas, seres bem paga por isso e teres mais tempo para ti enquanto impactas o dia mais importante da vida das outras pessoas, é essencial criares o teu negócio. Assim sabes o preço certo a cobrar que te permite viver disto e como ter clientes todos os meses. Isso é o que ensino no CODE, a certificação em organização e decoração de eventos.</p>
-  <h2 style="margin-top:22px">Estás pronta para <em>investir</em> em ti, no teu negócio e na tua nova vida?</h2>
+  <h2>Estás pronta para <em>investir</em> em ti, no teu negócio e na tua nova vida?</h2>
+  <p class="intro">O primeiro passo para viveres de eventos é tornares-te profissional, para entregares um trabalho de qualidade que atrai interessados. Mas só isso não chega.</p>
+  <p class="intro">Se queres mesmo viver de eventos, fazer o que gostas, ser bem paga por isso e ter mais tempo para ti enquanto impactas o dia mais importante da vida das outras pessoas, é essencial criares o teu negócio: saber o preço certo a cobrar e como ter clientes todos os meses.</p>
+  <p class="intro">É isso que ensino no <em style="font-style:normal;font-weight:600">CODE</em>, a certificação em organização e decoração de eventos.</p>
   <div class="opts">
     <button class="opt" onclick="R.investimento='pronto';fim('code','fim-code')">Sim, consigo investir já</button>
     <button class="opt" onclick="R.investimento='plano';fim('code','fim-code')">Sim, com um plano de pagamento</button>
@@ -199,8 +205,9 @@ body.dark .prog{background:#f4f1ec}
 </section>
 
 <section class="step" data-id="fim-clube">
+  <img class="mono-fim" src="assets/monogram-black.png" alt="">
   <h2>Começa por <em>aqui</em>.</h2>
-  <p class="d">1. Entra no Clube Viver de Eventos, é gratuito.<br>2. Lá dentro, assiste à masterclass "Por onde começar".<br>Quando terminares, envia-me mensagem por lá se tiveres alguma dúvida. Vou-te ajudar rumo a viver de eventos.</p>
+  <p class="d">1. Entra no Clube Viver de Eventos, é gratuito.<br>2. Lá dentro, assiste à masterclass <em style="font-family:var(--serif)">Por onde começar</em>.<br>Quando terminares, envia-me mensagem por lá se tiveres alguma dúvida. Vou-te ajudar rumo a viver de eventos.</p>
   <a class="cta" href="https://clube-viver-de-eventos.circle.so/c/comeca-aqui">Entrar no Clube gratuito</a>
 </section>
 
