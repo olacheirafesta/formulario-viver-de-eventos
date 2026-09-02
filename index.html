@@ -195,8 +195,9 @@ body.dark .prog{background:#f4f1ec}
 </section>
 
 <section class="step" data-id="fim-call">
-  <h2>Recebi a tua <em>candidatura</em>.</h2>
-  <p class="d">Vou analisá-la com atenção e entro em contacto contigo nas próximas 48 horas para marcarmos uma conversa.</p>
+  <h2>Escolhe o dia da nossa <em>conversa</em>.</h2>
+  <p class="d">Recebi a tua candidatura. Marca já o dia e a hora que te dão mais jeito. No fim recebes um convite para adicionares a marcação ao teu calendário (Google, iPhone ou Android).</p>
+  <div id="agenda" style="margin-top:26px"></div>
 </section>
 
 <section class="step" data-id="fim-code">
@@ -215,6 +216,7 @@ body.dark .prog{background:#f4f1ec}
 </div>
 
 <script>
+const AGENDA_URL=""; // colar aqui o link do Calendly / Google Appointment quando existir
 const R={ramo:null,respostas:{},investimento:null,destino:null};
 const Q=new URLSearchParams(location.search);
 const SEQ=['inicio','nome','email','telefone','instagram','divisor'];
@@ -226,10 +228,14 @@ function el(id){return document.querySelector(`[data-id="${id}"]`)}
 function atual(){return el(curId)}
 const DARK=['inicio','fim-call','fim-code','fim-clube'];
 function go(id){
-  if(id===curId)return;
-  const a=atual(); curId=id; if(a){a.classList.remove('on');a.classList.add('out');setTimeout(()=>a.classList.remove('out'),300)}
+  if(id===curId&&el(id).classList.contains('on'))return;
+  const a=el(curId); curId=id;
+  if(a&&a!==el(id)){a.classList.remove('on');a.classList.add('out')}
   const n=el(id);
-  setTimeout(()=>{n.classList.add('on');const i=n.querySelector('input,textarea');if(i&&window.innerWidth>560)i.focus();},220);
+  setTimeout(()=>{
+    document.querySelectorAll('.step').forEach(x=>{x.classList.remove('out');if(x!==n)x.classList.remove('on')});
+    n.classList.add('on');const i=n.querySelector('input,textarea');if(i&&window.innerWidth>560)i.focus();
+  },220);
   if(hist[hist.length-1]!==id)hist.push(id);
   document.getElementById('prog').style.width=Math.min(100,Math.round(hist.length/TOTAL*100))+'%';
   if(id.startsWith('fim'))document.getElementById('prog').style.width='100%';
@@ -252,7 +258,10 @@ function valida(campo,regra){
 }
 function txt(campo,key,dest){const t=v(campo);erro(null,t.length<3);if(t.length>2){R.respostas[key]=t;go(dest)}}
 function impede(resposta,rota){R.respostas.impede=resposta.trim();rota==='a4'?go('a4'):fim('clube','fim-clube')}
-function fim(destino,ecra){R.destino=destino;enviar();go(ecra)}
+function fim(destino,ecra){R.destino=destino;enviar();go(ecra);
+  if(ecra==='fim-call'){const ag=document.getElementById('agenda');
+    if(AGENDA_URL){ag.innerHTML='<iframe src="'+AGENDA_URL+'" style="width:100%;height:640px;border:0;background:#fff" loading="lazy"></iframe>'}
+    else{ag.innerHTML='<p class="d">Vou analisá-la com atenção e entro em contacto contigo nas próximas 48 horas para marcarmos a conversa.</p>'}}}
 function enviar(){
   const p={nome:v('f-nome'),email:v('f-email'),telefone:v('f-telefone'),instagram:v('f-instagram'),
     ramo:R.ramo,respostas:R.respostas,investimento:R.investimento,destino:R.destino,
