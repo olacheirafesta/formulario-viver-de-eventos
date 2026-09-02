@@ -203,7 +203,7 @@ body.dark .prog{background:#f4f1ec}
 <section class="step" data-id="fim-code">
   <h2>O CODE é o caminho <em>certo</em> para ti.</h2>
   <p class="d">É a certificação da EBS para começares o teu negócio de eventos do zero.</p>
-  <a class="cta" href="https://olacheirafesta.github.io/code">Conhecer o CODE</a>
+  <a class="cta" id="cta-code" href="https://olacheirafesta.github.io/code">Conhecer o CODE</a>
 </section>
 
 <section class="step" data-id="fim-clube">
@@ -259,6 +259,9 @@ function valida(campo,regra){
 function txt(campo,key,dest){const t=v(campo);erro(null,t.length<3);if(t.length>2){R.respostas[key]=t;go(dest)}}
 function impede(resposta,rota){R.respostas.impede=resposta.trim();rota==='a4'?go('a4'):fim('clube','fim-clube')}
 function fim(destino,ecra){R.destino=destino;enviar();go(ecra);
+  if(ecra==='fim-code'){const b=document.getElementById('cta-code');
+    if(R.investimento==='pronto'||R.investimento==='plano'){b.href='https://olacheirafesta.github.io/code/escolher.html';b.textContent='Escolher como pagar'}
+    else{b.href='https://olacheirafesta.github.io/code';b.textContent='Conhecer o CODE'}}
   if(ecra==='fim-call'){const ag=document.getElementById('agenda');
     if(AGENDA_URL){ag.innerHTML='<iframe src="'+AGENDA_URL+'" style="width:100%;height:640px;border:0;background:#fff" loading="lazy"></iframe>'}
     else{ag.innerHTML='<p class="d">Vou analisá-la com atenção e entro em contacto contigo nas próximas 48 horas para marcarmos a conversa.</p>'}}}
