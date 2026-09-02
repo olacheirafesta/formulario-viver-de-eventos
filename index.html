@@ -41,10 +41,25 @@ a.cta{display:inline-block;margin-top:32px;background:var(--ink);color:#fff;padd
 .back{position:fixed;bottom:22px;right:24px;display:flex;gap:8px;z-index:5}
 .back button{border:1px solid var(--line);background:#fff;width:42px;height:42px;font-size:16px;cursor:pointer;color:var(--soft)}
 .back button:hover{border-color:var(--ink)}
+body.dark{background:#0d0c0b}
+body.dark::before{content:"";position:fixed;inset:0;background:url(assets/entrada.jpg) center right/cover no-repeat;z-index:0}
+body.dark::after{content:"";position:fixed;inset:0;background:linear-gradient(90deg,rgba(10,9,8,.96) 0%,rgba(10,9,8,.86) 46%,rgba(10,9,8,.28) 100%);z-index:0}
+body.dark .stage{position:relative;z-index:1}
+body.dark,body.dark h1,body.dark h2{color:#f4f1ec}
+body.dark p.d{color:rgba(244,241,236,.82)}
+body.dark .btn{background:transparent;color:#fff;border:1.5px solid #fff}
+body.dark .btn:hover{background:#fff;color:#121110;opacity:1}
+body.dark a.cta{background:transparent;border:1.5px solid #fff;color:#fff}
+body.dark a.cta:hover{background:#fff;color:#121110}
+body.dark .enter{color:rgba(244,241,236,.55)}
+body.dark .logo{filter:invert(1)}
+body.dark .back button{background:transparent;border-color:rgba(255,255,255,.4);color:#f4f1ec}
+body.dark .prog{background:#f4f1ec}
+@media(max-width:700px){body.dark::after{background:linear-gradient(180deg,rgba(10,9,8,.82) 0%,rgba(10,9,8,.94) 70%)}}
 @media(max-width:560px){.stage{align-items:flex-start;padding-top:96px}.enter{display:none}}
 </style>
 </head>
-<body>
+<body class="dark">
 <div class="prog" id="prog"></div>
 <img class="logo" src="assets/monogram-black.png" alt="EBS">
 <div class="back"><button onclick="voltar()" aria-label="Voltar">↑</button></div>
@@ -203,6 +218,7 @@ let curId='inicio';
 
 function el(id){return document.querySelector(`[data-id="${id}"]`)}
 function atual(){return el(curId)}
+const DARK=['inicio','fim-call','fim-code','fim-clube'];
 function go(id){
   if(id===curId)return;
   const a=atual(); curId=id; if(a){a.classList.remove('on');a.classList.add('out');setTimeout(()=>a.classList.remove('out'),300)}
@@ -211,6 +227,7 @@ function go(id){
   if(hist[hist.length-1]!==id)hist.push(id);
   document.getElementById('prog').style.width=Math.min(100,Math.round(hist.length/TOTAL*100))+'%';
   if(id.startsWith('fim'))document.getElementById('prog').style.width='100%';
+  document.body.classList.toggle('dark',DARK.includes(id));
 }
 function voltar(){if(hist.length<2)return;hist.pop();const id=hist.pop();go(id)}
 function next(){
