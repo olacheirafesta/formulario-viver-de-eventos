@@ -219,6 +219,14 @@ body.dark .prog{background:#f4f1ec}
 const AGENDA_URL="https://calendly.com/cheirafesta/sessao-individual?hide_gdpr_banner=1&embed_domain=olacheirafesta.github.io&embed_type=Inline"; // colar aqui o link do Calendly / Google Appointment quando existir
 const R={ramo:null,respostas:{},investimento:null,destino:null};
 const Q=new URLSearchParams(location.search);
+const SID=Math.random().toString(36).slice(2,12);
+const T=new Set();
+function track(ev,det){
+  if(T.has(ev+(det||'')))return; T.add(ev+(det||''));
+  fetch('https://ebs-webhooks.vercel.app/api/funil-evento',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({sid:SID,evento:ev,detalhe:det||'',utm_source:Q.get('utm_source')||''})}).catch(()=>{});
+}
+track('abriu');
 const SEQ=['inicio','nome','email','telefone','instagram','divisor'];
 const TOTAL=11; // aprox. p/ barra de progresso
 let hist=['inicio'];
@@ -237,6 +245,7 @@ function go(id){
     n.classList.add('on');const i=n.querySelector('input,textarea');if(i&&window.innerWidth>560)i.focus();
   },220);
   if(hist[hist.length-1]!==id)hist.push(id);
+  if(id==='divisor')track('dados_completos');
   document.getElementById('prog').style.width=Math.min(100,Math.round(hist.length/TOTAL*100))+'%';
   if(id.startsWith('fim'))document.getElementById('prog').style.width='100%';
   document.body.classList.toggle('dark',DARK.includes(id));
@@ -244,6 +253,7 @@ function go(id){
 function voltar(){if(hist.length<2)return;hist.pop();const id=hist.pop();go(id)}
 function next(){
   const id=atual().dataset.id;
+  if(id==='inicio')track('comecou');
   const i=SEQ.indexOf(id);
   if(i>-1&&i<SEQ.length-1)go(SEQ[i+1]);
 }
@@ -258,7 +268,7 @@ function valida(campo,regra){
 }
 function txt(campo,key,dest){const t=v(campo);erro(null,t.length<3);if(t.length>2){R.respostas[key]=t;go(dest)}}
 function impede(resposta,rota){R.respostas.impede=resposta.trim();rota==='a4'?go('a4'):fim('clube','fim-clube')}
-function fim(destino,ecra){R.destino=destino;enviar();go(ecra);
+function fim(destino,ecra){R.destino=destino;track('concluiu',destino);enviar();go(ecra);
   if(ecra==='fim-code'){const b=document.getElementById('cta-code');
     if(R.investimento==='pronto'||R.investimento==='plano'){b.href='https://olacheirafesta.github.io/code/escolher.html';b.textContent='Escolher como pagar'}
     else{b.href='https://olacheirafesta.github.io/code';b.textContent='Conhecer o CODE'}}
