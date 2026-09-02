@@ -117,7 +117,7 @@ body.dark .prog{background:#f4f1ec}
 </section>
 
 <section class="step" data-id="a2">
-  <h2>O que é que criares o teu negócio de eventos iria trazer à tua <em>vida</em>?</h2>
+  <h2>Porque queres criar o teu próprio negócio de eventos? O que isso iria trazer à tua <em>vida</em>?</h2>
   <textarea id="f-a2" placeholder="Escreve aqui…"></textarea>
   <div class="err">Escreve pelo menos uma frase.</div>
   <div class="nav"><button class="btn" onclick="txt('f-a2','vida','a3')">OK</button></div>
@@ -127,18 +127,20 @@ body.dark .prog{background:#f4f1ec}
   <h2>O que te impede de <em>começar</em>?</h2>
   <div class="opts">
     <button class="opt" onclick="impede(this.textContent,'clube')">Não sei por onde começar</button>
-    <button class="opt" onclick="impede(this.textContent,'clube')">Falta de tempo ou de dinheiro</button>
-    <button class="opt" onclick="impede(this.textContent,'clube')">Não me sinto preparada</button>
+    <button class="opt" onclick="impede(this.textContent,'clube')">Medo de trocar o certo pelo incerto</button>
     <button class="opt" onclick="impede(this.textContent,'clube')">Medo de não ter clientes</button>
+    <button class="opt" onclick="impede(this.textContent,'clube')">Todas as opções anteriores</button>
     <button class="opt" onclick="impede(this.textContent,'a4')">Já decidi, só preciso de aprender</button>
   </div>
 </section>
 
 <section class="step" data-id="a4">
-  <h2>Se encontrasses o caminho certo, conseguias <em>investir</em> na tua formação?</h2>
+  <p class="d" style="margin-top:0">O primeiro passo para Viver de Eventos é tornares-te profissional, para que possas entregar um trabalho de qualidade que te vai permitir atrair interessados. Mas só isso não chega. Se queres mesmo viver de eventos, para poderes fazer o que gostas, seres bem paga por isso e teres mais tempo para ti enquanto impactas o dia mais importante da vida das outras pessoas, é essencial criares o teu negócio. Assim sabes o preço certo a cobrar que te permite viver disto e como ter clientes todos os meses. Isso é o que ensino no CODE, a certificação em organização e decoração de eventos.</p>
+  <h2 style="margin-top:22px">Estás pronta para <em>investir</em> em ti, no teu negócio e na tua nova vida?</h2>
   <div class="opts">
     <button class="opt" onclick="R.investimento='pronto';fim('code','fim-code')">Sim, consigo investir já</button>
     <button class="opt" onclick="R.investimento='plano';fim('code','fim-code')">Sim, com um plano de pagamento</button>
+    <button class="opt" onclick="R.investimento='info';fim('code','fim-code')">Sim, mas gostava de ter mais informações</button>
     <button class="opt" onclick="R.investimento='nao';fim('clube','fim-clube')">Neste momento não consigo</button>
   </div>
 </section>
@@ -154,34 +156,30 @@ body.dark .prog{background:#f4f1ec}
   <h2>Qual foi a tua <em>faturação</em> no último ano?</h2>
   <div class="opts">
     <button class="opt" onclick="R.respostas.faturacao=this.textContent;go('b3')">Menos de 5.000 €</button>
-    <button class="opt" onclick="R.respostas.faturacao=this.textContent;go('b3')">Entre 5.000 € e 15.000 €</button>
-    <button class="opt" onclick="R.respostas.faturacao=this.textContent;go('b3')">Entre 15.000 € e 30.000 €</button>
-    <button class="opt" onclick="R.respostas.faturacao=this.textContent;go('b3')">Mais de 30.000 €</button>
+    <button class="opt" onclick="R.respostas.faturacao=this.textContent;go('b3')">Entre 5.000 € e 10.000 €</button>
+    <button class="opt" onclick="R.respostas.faturacao=this.textContent;go('b3')">Entre 10.000 € e 50.000 €</button>
+    <button class="opt" onclick="R.respostas.faturacao=this.textContent;go('b3')">Mais de 50.000 €</button>
   </div>
 </section>
 
 <section class="step" data-id="b3">
-  <h2>Qual é o teu maior <em>objetivo</em> com o negócio?</h2>
+  <h2>Qual é o teu maior <em>objetivo</em> com o teu negócio de eventos?</h2>
   <textarea id="f-b3" placeholder="Escreve aqui…"></textarea>
   <div class="err">Escreve pelo menos uma frase.</div>
   <div class="nav"><button class="btn" onclick="txt('f-b3','objetivo','b4')">OK</button></div>
 </section>
 
 <section class="step" data-id="b4">
-  <h2>E qual é a maior <em>dificuldade</em> que sentes hoje?</h2>
+  <h2>Qual é a maior <em>dificuldade</em> que sentes hoje em atingir esse objetivo?</h2>
   <textarea id="f-b4" placeholder="Escreve aqui…"></textarea>
   <div class="err">Escreve pelo menos uma frase.</div>
   <div class="nav"><button class="btn" onclick="txt('f-b4','dificuldade','b5')">OK</button></div>
 </section>
 
 <section class="step" data-id="b5">
-  <h2>A Mentoria EBS é um acompanhamento de 12 meses para te tornares a <em>Escolha Óbvia™</em> e viveres dos eventos.</h2>
+  <h2>A Mentoria EBS é um acompanhamento de 12 meses com ajuda direta da Adriana e uma comunidade de empreendedoras que <em>Vivem de Eventos</em>.</h2>
   <p class="d">Análise completa do teu negócio, plano personalizado e acompanhamento da implementação, passo a passo. O investimento é de 5.000 €, com opção de pagamento em prestações.</p>
-  <div class="nav"><button class="btn" onclick="go('b6')">Continuar</button></div>
-</section>
-
-<section class="step" data-id="b6">
-  <h2>Consegues fazer este <em>investimento</em>?</h2>
+  <p class="d" style="color:var(--ink);font-weight:600;margin-top:22px">Consegues fazer este investimento em ti e no teu negócio?</p>
   <div class="opts">
     <button class="opt" onclick="R.investimento='pronto';fim('call','fim-call')">Sim, a pronto</button>
     <button class="opt" onclick="R.investimento='prestacoes';fim('call','fim-call')">Sim, em prestações</button>
@@ -201,9 +199,9 @@ body.dark .prog{background:#f4f1ec}
 </section>
 
 <section class="step" data-id="fim-clube">
-  <h2>O teu próximo passo é <em>simples</em>.</h2>
-  <p class="d">1. Entra no Clube Viver de Eventos, é gratuito.<br>2. Lá dentro, assiste à masterclass "Por onde começar".<br>Continua perto de mim, eu acompanho-te.</p>
-  <a class="cta" href="https://clube-viver-de-eventos.circle.so">Entrar no Clube gratuito</a>
+  <h2>Começa por <em>aqui</em>.</h2>
+  <p class="d">1. Entra no Clube Viver de Eventos, é gratuito.<br>2. Lá dentro, assiste à masterclass "Por onde começar".<br>Quando terminares, envia-me mensagem por lá se tiveres alguma dúvida. Vou-te ajudar rumo a viver de eventos.</p>
+  <a class="cta" href="https://clube-viver-de-eventos.circle.so/c/comeca-aqui">Entrar no Clube gratuito</a>
 </section>
 
 </div>
