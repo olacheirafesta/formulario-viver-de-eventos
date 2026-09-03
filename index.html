@@ -246,9 +246,8 @@ function go(id){
   },220);
   if(hist[hist.length-1]!==id)hist.push(id);
   if(id==='divisor'){
-    const nm=(document.getElementById('nome')||{}).value||'';
-    const em=(document.getElementById('email')||{}).value||'';
-    const tl=(document.getElementById('telefone')||{}).value||'';
+    const gv=k=>{const e=document.querySelector('[data-id="'+k+'"] input');return e?e.value:''};
+    const nm=gv('nome'),em=gv('email'),tl=gv('telefone');
     track('dados_completos',(nm+' · '+em+' · '+tl).slice(0,180));
   }
   if(!id.startsWith('fim')&&id!=='inicio')track('passo',id);
