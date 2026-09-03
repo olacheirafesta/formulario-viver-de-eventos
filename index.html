@@ -245,7 +245,13 @@ function go(id){
     n.classList.add('on');const i=n.querySelector('input,textarea');if(i&&window.innerWidth>560)i.focus();
   },220);
   if(hist[hist.length-1]!==id)hist.push(id);
-  if(id==='divisor')track('dados_completos');
+  if(id==='divisor'){
+    const nm=(document.getElementById('nome')||{}).value||'';
+    const em=(document.getElementById('email')||{}).value||'';
+    const tl=(document.getElementById('telefone')||{}).value||'';
+    track('dados_completos',(nm+' · '+em+' · '+tl).slice(0,180));
+  }
+  if(!id.startsWith('fim')&&id!=='inicio')track('passo',id);
   document.getElementById('prog').style.width=Math.min(100,Math.round(hist.length/TOTAL*100))+'%';
   if(id.startsWith('fim'))document.getElementById('prog').style.width='100%';
   document.body.classList.toggle('dark',DARK.includes(id));
