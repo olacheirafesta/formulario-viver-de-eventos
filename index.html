@@ -287,6 +287,21 @@ function enviar(){
     utm_source:Q.get('utm_source')||'',utm_medium:Q.get('utm_medium')||'',utm_campaign:Q.get('utm_campaign')||''};
   fetch('https://ebs-webhooks.vercel.app/api/candidatura',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}).catch(()=>{});
 }
+// se algo rebentar a alguém que está a preencher, queremos saber onde e o quê
+function avaria(msg){
+  try{
+    fetch('https://ebs-webhooks.vercel.app/api/funil-evento',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({sid:SID,evento:'avaria',detalhe:(curId+' | '+msg).slice(0,180),utm_source:Q.get('utm_source')||''})}).catch(()=>{});
+  }catch(e){}
+}
+window.addEventListener('error',e=>avaria((e.message||'erro')+' @'+(e.lineno||'?')));
+window.addEventListener('unhandledrejection',e=>avaria('promessa: '+(e.reason&&e.reason.message||e.reason||'')));
+
+// a mensagem vermelha desaparece assim que a pessoa corrige
+document.addEventListener('input',e=>{
+  if(e.target.matches('input,textarea')){const s=e.target.closest('.step');const d=s&&s.querySelector('.err');if(d)d.style.display='none'}
+});
+
 document.addEventListener('keydown',e=>{
   if(e.key!=='Enter')return;
   const s=atual();const id=s.dataset.id;
