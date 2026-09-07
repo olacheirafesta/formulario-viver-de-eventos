@@ -339,8 +339,6 @@ body.escuro .voltar:hover{border-color:var(--papel)}
       <div class="agenda" id="agenda-code">
         <iframe title="Marcar a conversa" loading="lazy" data-src="https://calendly.com/cheirafesta/sessao-individual?hide_gdpr_banner=1&hide_landing_page_details=1&background_color=ffffff&text_color=111110&primary_color=2E3A2C"></iframe>
       </div>
-      <p class="texto">Se preferires ver tudo primeiro, o CODE está aqui.</p>
-      <div class="acoes"><a class="btn code" id="cta-code" href="https://olacheirafesta.github.io/code">Conhecer o CODE</a></div>
     </div>
   </section>
 
@@ -371,8 +369,6 @@ body.escuro .voltar:hover{border-color:var(--papel)}
   'use strict';
   var ENDPOINT = 'https://ebs-webhooks.vercel.app/api/candidatura';
   var EVENTOS = 'https://ebs-webhooks.vercel.app/api/funil-evento';
-  var CODE_ESCOLHER = 'https://olacheirafesta.github.io/code/escolher.html';
-  var CODE_INFO = 'https://olacheirafesta.github.io/code';
 
   var Q = new URLSearchParams(location.search);
   var SID = Math.random().toString(36).slice(2, 12);
@@ -542,11 +538,6 @@ body.escuro .voltar:hover{border-color:var(--papel)}
   function final(secao){
     dados.destino = secao.dataset.destino;
     track('concluiu', dados.destino);
-    if (secao.dataset.id === 'fim-code') {
-      var cta = document.getElementById('cta-code');
-      if (dados.investimento === 'info') { cta.textContent = 'Conhecer o CODE'; cta.href = CODE_INFO; }
-      else { cta.textContent = 'Escolher como pagar'; cta.href = CODE_ESCOLHER; }
-    }
     var quadro = secao.querySelector('iframe[data-src]');
     if (quadro) { quadro.src = quadro.dataset.src; quadro.removeAttribute('data-src'); }
     envia(false);
