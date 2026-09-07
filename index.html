@@ -2,312 +2,607 @@
 <html lang="pt">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Viver de Eventos · Candidatura</title>
-<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Viver de Eventos · Event Business School</title>
+<meta name="description" content="Responde a estas perguntas para eu perceber em que momento estás. No fim, mostro-te o passo certo para ti.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Red+Hat+Display:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#121110;--soft:#3a3836;--muted:#77736c;--line:#e4e1dc;
---serif:"Playfair Display",Georgia,serif;--sans:"Helvetica Neue",Helvetica,Arial,sans-serif}
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%}
-body{background:#ffffff;color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;overflow-x:hidden}
-.prog{position:fixed;top:0;left:0;height:3px;background:var(--ink);width:0;transition:width .4s ease;z-index:5}
-.logo{position:fixed;top:22px;left:24px;height:34px;z-index:5}
-.stage{min-height:100%;display:flex;align-items:center;justify-content:center;padding:40px 24px 90px}
-.step{width:100%;max-width:620px;display:none;opacity:0;transform:translateY(26px)}
-.step.on{display:block;animation:in .45s cubic-bezier(.2,.7,.3,1) forwards}
-.step.out{display:block;animation:sai .3s ease forwards}
-@keyframes in{to{opacity:1;transform:none}}
-@keyframes sai{from{opacity:1;transform:none}to{opacity:0;transform:translateY(-26px)}}
-h1,h2{font-family:var(--serif);font-weight:500;line-height:1.14;letter-spacing:-.01em}
-h1{font-size:clamp(30px,5.5vw,44px)}
-h2{font-size:clamp(24px,4.5vw,34px)}
-h1 em,h2 em{font-style:italic}
-p.d{margin-top:14px;color:var(--soft);font-size:clamp(15px,2.5vw,17px)}
-p.intro{margin-top:14px;color:var(--muted);font-size:clamp(13.5px,2.2vw,15px);line-height:1.65;max-width:540px}
-body.dark p.intro{color:rgba(244,241,236,.65)}
-.mono-fim{height:56px;margin-bottom:26px;display:block}
-body.dark .mono-fim{filter:invert(1)}
-input[type=text],input[type=email],input[type=tel]{width:100%;border:0;border-bottom:2px solid var(--line);padding:12px 2px;font-size:clamp(20px,3.5vw,26px);font-family:var(--sans);color:var(--ink);background:none;border-radius:0;margin-top:30px}
-input:focus{outline:none;border-bottom-color:var(--ink)}
-textarea{width:100%;border:0;border-bottom:2px solid var(--line);padding:12px 2px;font-size:clamp(18px,3vw,22px);font-family:var(--sans);color:var(--ink);min-height:76px;margin-top:30px;border-radius:0;resize:none}
-textarea:focus{outline:none;border-bottom-color:var(--ink)}
-.opts{margin-top:30px;display:flex;flex-direction:column;gap:10px}
-.opt{border:1.5px solid var(--line);padding:16px 18px;cursor:pointer;font-size:clamp(15.5px,2.6vw,17px);background:#fff;text-align:left;font-family:var(--sans);color:var(--ink);transition:border-color .15s,background .15s}
-.opt:hover{border-color:var(--ink)}
-.opt:active{background:#f4f2ef}
-.nav{margin-top:30px;display:flex;align-items:center;gap:16px}
-.btn{background:var(--ink);color:#fff;border:0;padding:16px 36px;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:var(--sans)}
-.btn:hover{opacity:.85}
-.enter{font-size:12.5px;color:var(--muted)}
-.err{color:#a33;font-size:14px;margin-top:12px;display:none}
-a.cta{display:inline-block;margin-top:32px;background:var(--ink);color:#fff;padding:16px 36px;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
-.back{position:fixed;bottom:22px;right:24px;display:flex;gap:8px;z-index:5}
-.back button{border:1px solid var(--line);background:#fff;width:42px;height:42px;font-size:16px;cursor:pointer;color:var(--soft)}
-.back button:hover{border-color:var(--ink)}
-body.dark{background:#0d0c0b}
-body.dark::before{content:"";position:fixed;inset:0;background:url(assets/entrada.jpg) center right/cover no-repeat;z-index:0}
-body.dark::after{content:"";position:fixed;inset:0;background:linear-gradient(90deg,rgba(10,9,8,.96) 0%,rgba(10,9,8,.86) 46%,rgba(10,9,8,.28) 100%);z-index:0}
-body.dark .stage{position:relative;z-index:1}
-body.dark,body.dark h1,body.dark h2{color:#f4f1ec}
-body.dark p.d{color:rgba(244,241,236,.82)}
-body.dark .btn{background:transparent;color:#fff;border:1.5px solid #fff}
-body.dark .btn:hover{background:#fff;color:#121110;opacity:1}
-body.dark a.cta{background:transparent;border:1.5px solid #fff;color:#fff}
-body.dark a.cta:hover{background:#fff;color:#121110}
-body.dark .enter{color:rgba(244,241,236,.55)}
-body.dark .logo{filter:invert(1)}
-body.dark .back button{background:transparent;border-color:rgba(255,255,255,.4);color:#f4f1ec}
-body.dark .prog{background:#f4f1ec}
-@media(max-width:700px){body.dark::after{background:linear-gradient(180deg,rgba(10,9,8,.82) 0%,rgba(10,9,8,.94) 70%)}}
-@media(max-width:560px){.stage{align-items:flex-start;padding-top:96px}.enter{display:none}}
-.step.on{scroll-margin-top:90px}
+:root{--tinta:#111110;--suave:#6F6B63;--fraca:#B8B4AC;--linha:#E2DED6;--papel:#FFFFFF}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:'Red Hat Display',system-ui,-apple-system,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,li,span{hyphens:manual;-webkit-hyphens:manual;overflow-wrap:break-word}
+::selection{background:var(--tinta);color:var(--papel)}
+
+/* barra de progresso */
+.progresso{position:fixed;top:0;left:0;right:0;height:2px;background:var(--linha);z-index:30}
+.progresso i{display:block;height:100%;width:5%;background:var(--tinta);transition:width .45s cubic-bezier(.22,.61,.36,1)}
+
+/* monograma */
+.marca{position:fixed;top:20px;left:20px;height:20px;z-index:30}
+.marca img{height:100%;width:auto;display:block}
+
+/* voltar */
+.voltar{position:fixed;right:18px;bottom:18px;width:46px;height:46px;display:grid;place-items:center;padding:0;border:1px solid var(--linha);background:var(--papel);color:var(--tinta);cursor:pointer;z-index:30}
+.voltar:hover{border-color:var(--tinta)}
+.voltar[hidden]{display:none}
+.voltar svg{width:15px;height:15px;display:block}
+
+/* palco e ecrãs */
+#palco{position:relative;width:100%}
+.ecra{display:none;flex-direction:column;justify-content:center;width:100%;min-height:100vh;min-height:100svh;padding:78px 20px 92px}
+.ecra.on{display:flex;animation:sobe .44s cubic-bezier(.22,.61,.36,1) both}
+.ecra.sai{display:flex;position:absolute;top:0;left:0;right:0;animation:vai .26s ease-in both;pointer-events:none}
+@keyframes sobe{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes vai{from{opacity:1;transform:none}to{opacity:0;transform:translateY(-26px)}}
+@media (prefers-reduced-motion:reduce){.ecra.on,.ecra.sai{animation:none}.progresso i{transition:none}}
+.bloco{width:100%;max-width:600px}
+.bloco.largo{max-width:900px}
+
+/* tipografia */
+.passo{margin:0 0 26px;font-size:12px;letter-spacing:.28em;color:var(--suave)}
+.pergunta{margin:0;font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(27px,6.6vw,44px);line-height:1.16;text-wrap:pretty}
+.pergunta em,.titulo em{font-style:italic}
+.titulo{margin:0;font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(25px,5.4vw,38px);line-height:1.2;text-wrap:pretty}
+.sub{margin:34px 0 0;font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(20px,4.2vw,26px);line-height:1.28;text-wrap:pretty}
+.texto{margin:22px 0 0;max-width:560px;font-size:16px;line-height:1.75;color:var(--suave);text-wrap:pretty}
+.texto.forte{color:var(--tinta)}
+
+/* campos */
+form.bloco{margin:0}
+.campo{margin:34px 0 0}
+.campo input,.campo textarea{width:100%;padding:12px 0;border:0;border-bottom:1px solid var(--tinta);border-radius:0;background:transparent;color:var(--tinta);font-family:inherit;font-size:20px;line-height:1.5;outline:none;-webkit-appearance:none}
+.campo textarea{resize:none;min-height:112px}
+.campo input::placeholder,.campo textarea::placeholder{color:var(--fraca)}
+.campo input:focus,.campo textarea:focus{box-shadow:inset 0 -1px 0 var(--tinta)}
+.campo.mal input,.campo.mal textarea{border-bottom-color:var(--suave)}
+.erro{margin:12px 0 0;font-size:14px;color:var(--tinta)}
+.erro[hidden]{display:none}
+.acoes{display:flex;align-items:center;gap:18px;margin:30px 0 0}
+.dica{display:none;font-size:12px;letter-spacing:.14em;color:var(--suave)}
+.btn{padding:16px 32px;border:0;background:var(--tinta);color:var(--papel);font-family:inherit;font-size:13px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer;display:inline-block}
+.btn:hover{background:#3B3934}
+
+/* opções */
+.opcoes{list-style:none;margin:34px 0 0;padding:0;border-top:1px solid var(--linha)}
+.opcoes li{border-bottom:1px solid var(--linha)}
+.opcoes button{display:flex;align-items:center;gap:14px;width:100%;min-height:62px;padding:14px 2px;border:0;background:transparent;color:var(--tinta);font-family:inherit;font-size:17px;line-height:1.4;text-align:left;cursor:pointer}
+.opcoes .tecla{display:none;flex:none;width:20px;font-size:12px;color:var(--suave)}
+.opcoes .rot{flex:1}
+.opcoes .caixa{flex:none;width:12px;height:12px;border:1px solid var(--tinta)}
+.opcoes button:hover .caixa,.opcoes button:focus-visible .caixa,.opcoes button.escolhida .caixa{background:var(--tinta)}
+.opcoes button:hover .rot{padding-left:4px;transition:padding-left .18s ease}
+
+/* finais */
+.capa{position:relative;margin:0 -20px 34px;aspect-ratio:4/3;overflow:hidden}
+.capa>img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 34%}
+.capa::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,16,.58) 0%,rgba(17,17,16,.12) 62%,rgba(17,17,16,.04) 100%)}
+.capa .selo{position:absolute;z-index:1;left:20px;bottom:18px;width:auto;height:40px;object-fit:contain}
+.lista{margin:24px 0 0;padding:0;list-style:none;counter-reset:n;max-width:560px}
+.lista li{position:relative;counter-increment:n;padding:14px 0 14px 34px;border-top:1px solid var(--linha);font-size:16px;line-height:1.7}
+.lista li:last-child{border-bottom:1px solid var(--linha)}
+.lista li::before{content:counter(n) ".";position:absolute;left:0;top:14px;font-size:16px;color:var(--suave)}
+.agenda{margin:30px -20px 0;height:1160px}
+.agenda iframe{display:block;width:100%;height:100%;border:0}
+.aviso{margin:22px 0 0;font-size:14px;color:var(--suave)}
+.aviso[hidden]{display:none}
+
+/* peles: fotografia na entrada, cor do produto nos finais */
+.ecra.pele-foto{position:relative;justify-content:flex-end;overflow:hidden;color:var(--papel)}
+.fundo{position:absolute;inset:0;z-index:0}
+.fundo img{display:block;width:100%;height:100%;object-fit:cover}
+.fundo::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,16,.9) 0%,rgba(17,17,16,.66) 46%,rgba(17,17,16,.28) 100%)}
+.pele-foto .bloco{position:relative;z-index:1}
+.pele-escura{background:var(--tinta);color:var(--papel)}
+.pele-foto .texto,.pele-escura .texto{color:rgba(255,255,255,.92)}
+.pele-foto .btn,.pele-escura .btn{background:var(--papel);color:var(--tinta)}
+.pele-foto .btn:hover,.pele-escura .btn:hover{background:#E8E4DC}
+body.sem-marca .marca{display:none}
+body.escuro .marca img{filter:invert(1)}
+body.escuro .progresso{background:rgba(255,255,255,.24)}
+body.escuro .progresso i{background:var(--papel)}
+body.escuro .voltar{background:transparent;border-color:rgba(255,255,255,.34);color:var(--papel)}
+body.escuro .voltar:hover{border-color:var(--papel)}
+.kicker{margin:0 0 22px;font-size:12px;letter-spacing:.28em;color:var(--suave)}
+.kicker.code{color:#2E3A2C}
+.btn.code{background:#2E3A2C}
+.btn.code:hover{background:#3E5139}
+.btn.clube{background:#A79480}
+.btn.clube:hover{background:#B7A793}
+.retrato{margin:20px 0 0;width:100%;max-width:300px;aspect-ratio:4/5;overflow:hidden}
+.topo-code{display:grid;gap:6px}
+.retrato img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+
+:focus-visible{outline:2px solid var(--tinta);outline-offset:4px}
+
+@media (min-width:640px){
+  .ecra{padding:96px 40px 104px}
+  .marca{top:26px;left:34px;height:22px}
+  .voltar{right:26px;bottom:26px}
+  .dica{display:inline}
+  .opcoes .tecla{display:block}
+  .agenda{margin:32px 0 0;height:840px}
+  .texto{font-size:17px}
+}
+@media (min-width:1000px){
+  .ecra{padding:112px 8vw 112px}
+}
+@media (min-width:760px){
+  .topo-code{grid-template-columns:minmax(0,1fr) 250px;gap:48px;align-items:end}
+  .topo-code .retrato{margin:0;max-width:250px}
+  .capa{margin:0 0 40px;aspect-ratio:16/7}
+  .capa .selo{left:28px;bottom:24px;height:52px}
+}
 </style>
 </head>
-<body class="dark">
-<div class="prog" id="prog"></div>
-<img class="logo" src="assets/monogram-black.png" alt="EBS">
-<div class="back" style="display:none"><button onclick="voltar()" aria-label="Voltar">↑</button></div>
+<body>
 
-<div class="stage">
+<div class="progresso" role="progressbar" aria-label="Progresso" aria-valuemin="0" aria-valuemax="100" aria-valuenow="5"><i id="barra"></i></div>
+<div class="marca"><img src="data:image/png;base64,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" alt="Event Business School"></div>
 
-<section class="step on" data-id="inicio">
-  <h1>O caminho para <em>viveres dos eventos</em> começa aqui.</h1>
-  <p class="d">Responde a estas perguntas para eu perceber em que momento estás. No fim, mostro-te o passo certo para ti. Demora menos de 2 minutos.</p>
-  <div class="nav"><button class="btn" onclick="next()">Começar</button><span class="enter">ou carrega em Enter ↵</span></div>
-</section>
+<main id="palco">
 
-<section class="step" data-id="nome">
-  <h2>Como te <em>chamas</em>?</h2>
-  <input type="text" id="f-nome" autocomplete="name" placeholder="O teu nome">
-  <div class="err">Escreve o teu nome.</div>
-  <div class="nav"><button class="btn" onclick="valida('f-nome',2)">OK</button><span class="enter">Enter ↵</span></div>
-</section>
+  <section class="ecra pele-foto" data-id="inicio" data-tipo="abertura" data-escuro="1">
+    <div class="fundo"><img src="assets/entrada.jpg" alt="" fetchpriority="high"></div>
+    <div class="bloco">
+      <h1 class="pergunta">O caminho para <em>Viver de Eventos</em> começa aqui.</h1>
+      <p class="texto forte">Responde a estas perguntas para eu perceber em que momento estás. No fim, mostro-te o passo certo para ti. Demora menos de 2 minutos.</p>
+      <div class="acoes"><button type="button" class="btn" data-ir="nome">Começar</button></div>
+    </div>
+  </section>
 
-<section class="step" data-id="email">
-  <h2>Qual é o teu <em>email</em>?</h2>
-  <input type="email" id="f-email" autocomplete="email" placeholder="nome@email.com">
-  <div class="err">Escreve um email válido.</div>
-  <div class="nav"><button class="btn" onclick="valida('f-email','email')">OK</button><span class="enter">Enter ↵</span></div>
-</section>
+  <section class="ecra" data-id="nome" data-tipo="campo">
+    <form class="bloco" novalidate>
+      <p class="passo"></p>
+      <h2 class="pergunta">Como te <em>chamas</em>?</h2>
+      <div class="campo" data-guarda="nome" data-regra="texto">
+        <input id="f-nome" name="nome" type="text" placeholder="O teu nome" autocomplete="name" autocapitalize="words">
+        <p class="erro" hidden>Escreve o teu nome.</p>
+      </div>
+      <div class="acoes"><button type="submit" class="btn">OK</button><span class="dica">Enter ↵</span></div>
+    </form>
+  </section>
 
-<section class="step" data-id="telefone">
-  <h2>E o teu <em>telemóvel</em>?</h2>
-  <input type="tel" id="f-telefone" autocomplete="tel" placeholder="912 345 678">
-  <div class="err">Escreve um número válido.</div>
-  <div class="nav"><button class="btn" onclick="valida('f-telefone','tel')">OK</button><span class="enter">Enter ↵</span></div>
-</section>
+  <section class="ecra" data-id="email" data-tipo="campo">
+    <form class="bloco" novalidate>
+      <p class="passo"></p>
+      <h2 class="pergunta">Qual é o teu <em>email</em>?</h2>
+      <div class="campo" data-guarda="email" data-regra="email">
+        <input id="f-email" name="email" type="email" placeholder="nome@email.com" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false">
+        <p class="erro" hidden>Escreve um email válido.</p>
+      </div>
+      <div class="acoes"><button type="submit" class="btn">OK</button><span class="dica">Enter ↵</span></div>
+    </form>
+  </section>
 
-<section class="step" data-id="instagram">
-  <h2>Qual é a tua conta de <em>Instagram</em>?</h2>
-  <input type="text" id="f-instagram" placeholder="@atuaconta">
-  <div class="err">Escreve o teu @.</div>
-  <div class="nav"><button class="btn" onclick="valida('f-instagram',1)">OK</button><span class="enter">Enter ↵</span></div>
-</section>
+  <section class="ecra" data-id="telefone" data-tipo="campo">
+    <form class="bloco" novalidate>
+      <p class="passo"></p>
+      <h2 class="pergunta">E o teu <em>telemóvel</em>?</h2>
+      <div class="campo" data-guarda="telefone" data-regra="telefone">
+        <input id="f-telefone" name="telefone" type="tel" placeholder="912 345 678" autocomplete="tel" inputmode="tel">
+        <p class="erro" hidden>Escreve um número válido.</p>
+      </div>
+      <div class="acoes"><button type="submit" class="btn">OK</button><span class="dica">Enter ↵</span></div>
+    </form>
+  </section>
 
-<section class="step" data-id="divisor">
-  <h2>Já fazes eventos para <em>clientes</em>?</h2>
-  <div class="opts">
-    <button class="opt" onclick="R.ramo='mentoria';go('b1')">Sim, já tenho negócio de eventos</button>
-    <button class="opt" onclick="R.ramo='code';go('a1')">Ainda não, estou a começar</button>
-  </div>
-</section>
+  <section class="ecra" data-id="instagram" data-tipo="campo">
+    <form class="bloco" novalidate>
+      <p class="passo"></p>
+      <h2 class="pergunta">Qual é a tua conta de <em>Instagram</em>?</h2>
+      <div class="campo" data-guarda="instagram" data-regra="instagram">
+        <input id="f-instagram" name="instagram" type="text" placeholder="@atuaconta" autocapitalize="off" spellcheck="false">
+        <p class="erro" hidden>Escreve o teu @.</p>
+      </div>
+      <div class="acoes"><button type="submit" class="btn">OK</button><span class="dica">Enter ↵</span></div>
+    </form>
+  </section>
 
-<section class="step" data-id="a1">
-  <h2>Gostavas de ser <em>organizadora</em> de eventos?</h2>
-  <div class="opts">
-    <button class="opt" onclick="R.respostas.sonho=this.textContent;go('a2')">Sim, é o que eu quero</button>
-    <button class="opt" onclick="R.respostas.sonho=this.textContent;go('a2')">Estou a explorar a ideia</button>
-  </div>
-</section>
+  <section class="ecra" data-id="divisor" data-tipo="escolha">
+    <div class="bloco">
+      <p class="passo"></p>
+      <h2 class="pergunta">Já fazes eventos para <em>clientes</em>?</h2>
+      <ul class="opcoes">
+        <li><button type="button" data-ir="b1" data-ramo="B"><span class="tecla">1</span><span class="rot">Sim, já tenho negócio de eventos</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="a1" data-ramo="A"><span class="tecla">2</span><span class="rot">Ainda não, estou a começar</span><span class="caixa"></span></button></li>
+      </ul>
+    </div>
+  </section>
 
-<section class="step" data-id="a2">
-  <h2>Porque queres criar o teu próprio negócio de eventos? O que isso iria trazer à tua <em>vida</em>?</h2>
-  <textarea id="f-a2" placeholder="Escreve aqui…"></textarea>
-  <div class="err">Escreve pelo menos uma frase.</div>
-  <div class="nav"><button class="btn" onclick="txt('f-a2','vida','a3')">OK</button></div>
-</section>
+  <section class="ecra" data-id="a1" data-tipo="escolha" data-guarda="respostas.sonho">
+    <div class="bloco">
+      <p class="passo"></p>
+      <h2 class="pergunta">Gostavas de ser <em>organizadora</em> de eventos?</h2>
+      <ul class="opcoes">
+        <li><button type="button" data-ir="a2"><span class="tecla">1</span><span class="rot">Sim, é o que eu quero</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="a2"><span class="tecla">2</span><span class="rot">Estou a explorar a ideia</span><span class="caixa"></span></button></li>
+      </ul>
+    </div>
+  </section>
 
-<section class="step" data-id="a3">
-  <h2>O que te impede de <em>começar</em>?</h2>
-  <div class="opts">
-    <button class="opt" onclick="impede(this.textContent,'clube')">Não sei por onde começar</button>
-    <button class="opt" onclick="impede(this.textContent,'clube')">Medo de trocar o certo pelo incerto</button>
-    <button class="opt" onclick="impede(this.textContent,'clube')">Medo de não ter clientes</button>
-    <button class="opt" onclick="impede(this.textContent,'clube')">Todas as opções anteriores</button>
-    <button class="opt" onclick="impede(this.textContent,'a4')">Já decidi, só preciso de aprender</button>
-  </div>
-</section>
+  <section class="ecra" data-id="a2" data-tipo="campo">
+    <form class="bloco" novalidate>
+      <p class="passo"></p>
+      <h2 class="pergunta">Porque queres criar o teu próprio negócio de eventos? O que isso iria trazer à tua <em>vida</em>?</h2>
+      <div class="campo" data-guarda="respostas.vida" data-regra="texto">
+        <textarea id="f-a2" name="vida" rows="3" placeholder="Escreve aqui…"></textarea>
+        <p class="erro" hidden>Escreve a tua resposta.</p>
+      </div>
+      <div class="acoes"><button type="submit" class="btn">OK</button><span class="dica">Enter ↵</span></div>
+    </form>
+  </section>
 
-<section class="step" data-id="a4">
-  <h2>Estás pronta para <em>investir</em> em ti, no teu negócio e na tua nova vida?</h2>
-  <p class="intro">O primeiro passo para viveres de eventos é tornares-te profissional, para entregares um trabalho de qualidade que atrai interessados. Mas só isso não chega.</p>
-  <p class="intro">Se queres mesmo viver de eventos, fazer o que gostas, ser bem paga por isso e ter mais tempo para ti enquanto impactas o dia mais importante da vida das outras pessoas, é essencial criares o teu negócio: saber o preço certo a cobrar e como ter clientes todos os meses.</p>
-  <p class="intro">É isso que ensino no <em style="font-style:normal;font-weight:600">CODE</em>, a certificação em organização e decoração de eventos.</p>
-  <div class="opts">
-    <button class="opt" onclick="R.investimento='pronto';fim('code','fim-code')">Sim, consigo investir já</button>
-    <button class="opt" onclick="R.investimento='plano';fim('code','fim-code')">Sim, com um plano de pagamento</button>
-    <button class="opt" onclick="R.investimento='info';fim('code','fim-code')">Sim, mas gostava de ter mais informações</button>
-    <button class="opt" onclick="R.investimento='nao';fim('clube','fim-clube')">Neste momento não consigo</button>
-  </div>
-</section>
+  <section class="ecra" data-id="a3" data-tipo="escolha" data-guarda="respostas.impede">
+    <div class="bloco">
+      <p class="passo"></p>
+      <h2 class="pergunta">O que te impede de <em>começar</em>?</h2>
+      <ul class="opcoes">
+        <li><button type="button" data-ir="fim-clube"><span class="tecla">1</span><span class="rot">Não sei por onde começar</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="fim-clube"><span class="tecla">2</span><span class="rot">Medo de trocar o certo pelo incerto</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="fim-clube"><span class="tecla">3</span><span class="rot">Medo de não ter clientes</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="fim-clube"><span class="tecla">4</span><span class="rot">Todas as opções anteriores</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="a4"><span class="tecla">5</span><span class="rot">Já decidi, só preciso de aprender</span><span class="caixa"></span></button></li>
+      </ul>
+    </div>
+  </section>
 
-<section class="step" data-id="b1">
-  <h2>Que tipo de negócio de eventos <em>tens</em>?</h2>
-  <textarea id="f-b1" placeholder="Ex.: organizo casamentos e batizados…"></textarea>
-  <div class="err">Conta-me em poucas palavras.</div>
-  <div class="nav"><button class="btn" onclick="txt('f-b1','tipo_negocio','b2')">OK</button></div>
-</section>
+  <section class="ecra" data-id="a4" data-tipo="escolha" data-guarda="investimento">
+    <div class="bloco">
+      <p class="passo"></p>
+      <p class="kicker code">CODE · CERTIFICAÇÃO EBS</p>
+      <h2 class="pergunta">Estás pronta para <em>investir</em> em ti, no teu negócio e na tua nova vida?</h2>
+      <p class="texto">O primeiro passo para viveres de eventos é tornares-te profissional, para entregares um trabalho de qualidade que atrai interessados. Mas isso sozinho não chega. Se queres mesmo viver de eventos, fazer o que gostas, ser bem paga por isso e ter mais tempo para ti enquanto impactas o dia mais importante da vida das outras pessoas, é essencial criares o teu negócio. É assim que sabes qual o preço certo a cobrar e como ter clientes todos os meses. É isso que ensino no CODE, a certificação em organização e decoração de eventos.</p>
+      <ul class="opcoes">
+        <li><button type="button" data-ir="fim-code" data-val="pronto"><span class="tecla">1</span><span class="rot">Sim, consigo investir já</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="fim-code" data-val="plano"><span class="tecla">2</span><span class="rot">Sim, com um plano de pagamento</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="fim-code" data-val="info"><span class="tecla">3</span><span class="rot">Sim, mas gostava de ter mais informações</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="fim-clube" data-val="nao"><span class="tecla">4</span><span class="rot">Neste momento não consigo</span><span class="caixa"></span></button></li>
+      </ul>
+    </div>
+  </section>
 
-<section class="step" data-id="b2">
-  <h2>Qual foi a tua <em>faturação</em> no último ano?</h2>
-  <div class="opts">
-    <button class="opt" onclick="R.respostas.faturacao=this.textContent;go('b3')">Menos de 5.000 €</button>
-    <button class="opt" onclick="R.respostas.faturacao=this.textContent;go('b3')">Entre 5.000 € e 10.000 €</button>
-    <button class="opt" onclick="R.respostas.faturacao=this.textContent;go('b3')">Entre 10.000 € e 50.000 €</button>
-    <button class="opt" onclick="R.respostas.faturacao=this.textContent;go('b3')">Mais de 50.000 €</button>
-  </div>
-</section>
+  <section class="ecra" data-id="b1" data-tipo="campo">
+    <form class="bloco" novalidate>
+      <p class="passo"></p>
+      <h2 class="pergunta">Que tipo de negócio de eventos <em>tens</em>?</h2>
+      <div class="campo" data-guarda="respostas.tipo_negocio" data-regra="texto">
+        <textarea id="f-b1" name="tipo_negocio" rows="3" placeholder="Ex.: organizo casamentos e batizados…"></textarea>
+        <p class="erro" hidden>Escreve a tua resposta.</p>
+      </div>
+      <div class="acoes"><button type="submit" class="btn">OK</button><span class="dica">Enter ↵</span></div>
+    </form>
+  </section>
 
-<section class="step" data-id="b3">
-  <h2>Qual é o teu maior <em>objetivo</em> com o teu negócio de eventos?</h2>
-  <textarea id="f-b3" placeholder="Escreve aqui…"></textarea>
-  <div class="err">Escreve pelo menos uma frase.</div>
-  <div class="nav"><button class="btn" onclick="txt('f-b3','objetivo','b4')">OK</button></div>
-</section>
+  <section class="ecra" data-id="b2" data-tipo="escolha" data-guarda="respostas.faturacao">
+    <div class="bloco">
+      <p class="passo"></p>
+      <h2 class="pergunta">Qual foi a tua <em>faturação</em> no último ano?</h2>
+      <ul class="opcoes">
+        <li><button type="button" data-ir="b3"><span class="tecla">1</span><span class="rot">Menos de 5.000 €</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="b3"><span class="tecla">2</span><span class="rot">Entre 5.000 € e 10.000 €</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="b3"><span class="tecla">3</span><span class="rot">Entre 10.000 € e 50.000 €</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="b3"><span class="tecla">4</span><span class="rot">Mais de 50.000 €</span><span class="caixa"></span></button></li>
+      </ul>
+    </div>
+  </section>
 
-<section class="step" data-id="b4">
-  <h2>Qual é a maior <em>dificuldade</em> que sentes hoje em atingir esse objetivo?</h2>
-  <textarea id="f-b4" placeholder="Escreve aqui…"></textarea>
-  <div class="err">Escreve pelo menos uma frase.</div>
-  <div class="nav"><button class="btn" onclick="txt('f-b4','dificuldade','b5')">OK</button></div>
-</section>
+  <section class="ecra" data-id="b3" data-tipo="campo">
+    <form class="bloco" novalidate>
+      <p class="passo"></p>
+      <h2 class="pergunta">Qual é o teu maior <em>objetivo</em> com o teu negócio de eventos?</h2>
+      <div class="campo" data-guarda="respostas.objetivo" data-regra="texto">
+        <textarea id="f-b3" name="objetivo" rows="3" placeholder="Escreve aqui…"></textarea>
+        <p class="erro" hidden>Escreve a tua resposta.</p>
+      </div>
+      <div class="acoes"><button type="submit" class="btn">OK</button><span class="dica">Enter ↵</span></div>
+    </form>
+  </section>
 
-<section class="step" data-id="b5">
-  <h2>A Mentoria EBS é um acompanhamento de 12 meses com ajuda direta da Adriana e uma comunidade de empreendedoras que <em>Vivem de Eventos</em>.</h2>
-  <p class="d">Análise completa do teu negócio, plano personalizado e acompanhamento da implementação, passo a passo. O investimento é de 5.000 €, com opção de pagamento em prestações.</p>
-  <p class="d" style="color:var(--ink);font-weight:600;margin-top:22px">Consegues fazer este investimento em ti e no teu negócio?</p>
-  <div class="opts">
-    <button class="opt" onclick="R.investimento='pronto';fim('call','fim-call')">Sim, a pronto</button>
-    <button class="opt" onclick="R.investimento='prestacoes';fim('call','fim-call')">Sim, em prestações</button>
-    <button class="opt" onclick="R.investimento='nao';fim('clube','fim-clube')">Neste momento não</button>
-  </div>
-</section>
+  <section class="ecra" data-id="b4" data-tipo="campo">
+    <form class="bloco" novalidate>
+      <p class="passo"></p>
+      <h2 class="pergunta">Qual é a maior <em>dificuldade</em> que sentes hoje em atingir esse objetivo?</h2>
+      <div class="campo" data-guarda="respostas.dificuldade" data-regra="texto">
+        <textarea id="f-b4" name="dificuldade" rows="3" placeholder="Escreve aqui…"></textarea>
+        <p class="erro" hidden>Escreve a tua resposta.</p>
+      </div>
+      <div class="acoes"><button type="submit" class="btn">OK</button><span class="dica">Enter ↵</span></div>
+    </form>
+  </section>
 
-<section class="step" data-id="fim-call">
-  <h2>Escolhe o dia da nossa <em>conversa</em>.</h2>
-  <p class="d">Recebi a tua candidatura. Marca já o dia e a hora que te dão mais jeito. No fim recebes um convite para adicionares a marcação ao teu calendário (Google, iPhone ou Android).</p>
-  <div id="agenda" style="margin-top:26px"></div>
-</section>
+  <section class="ecra" data-id="b5" data-tipo="escolha" data-guarda="investimento">
+    <div class="bloco">
+      <p class="passo"></p>
+      <p class="kicker">MENTORIA EBS · 12 MESES</p>
+      <h2 class="titulo">A Mentoria EBS é um acompanhamento de 12 meses com ajuda direta da Adriana e uma comunidade de empreendedoras que <em>Vivem de Eventos</em>.</h2>
+      <p class="texto">Análise completa do teu negócio, plano personalizado e acompanhamento da implementação, passo a passo. O investimento é de 5.000 €, com opção de pagamento em prestações.</p>
+      <h3 class="sub">Consegues fazer este investimento em ti e no teu negócio?</h3>
+      <ul class="opcoes">
+        <li><button type="button" data-ir="fim-call" data-val="pronto"><span class="tecla">1</span><span class="rot">Sim, a pronto</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="fim-call" data-val="prestacoes"><span class="tecla">2</span><span class="rot">Sim, em prestações</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="fim-clube" data-val="nao"><span class="tecla">3</span><span class="rot">Neste momento não</span><span class="caixa"></span></button></li>
+      </ul>
+    </div>
+  </section>
 
-<section class="step" data-id="fim-code">
-  <h2>O CODE é o caminho <em>certo</em> para ti.</h2>
-  <p class="d">É a certificação da EBS para começares o teu negócio de eventos do zero.</p>
-  <a class="cta" id="cta-code" href="https://olacheirafesta.github.io/code">Conhecer o CODE</a>
-</section>
+  <section class="ecra pele-escura" data-id="fim-call" data-tipo="fim" data-destino="call" data-escuro="1">
+    <div class="bloco largo">
+      <p class="kicker" style="color:rgba(255,255,255,.7)">MENTORIA EBS · CANDIDATURA RECEBIDA</p>
+      <h2 class="pergunta">O teu próximo passo é uma sessão individual comigo, <em>gratuita</em>.</h2>
+      <p class="texto">Recebi a tua candidatura e decidi oferecer-te uma sessão de diagnóstico. São 30 minutos, eu e tu, a olhar para o teu negócio como ele está: o que já funciona, o que está a travar as vendas e qual é o próximo passo a implementar. Sais da conversa a saber o que fazer a seguir.</p>
+      <p class="texto">Escolhe o dia e a hora que te dão mais jeito. No fim recebes um convite para adicionares a marcação ao teu calendário (Google, iPhone ou Android).</p>
+      <div class="agenda" id="agenda">
+        <iframe title="Marcar a conversa" loading="lazy" data-src="https://calendly.com/cheirafesta/sessao-individual?hide_gdpr_banner=1&hide_landing_page_details=1&background_color=111110&text_color=ffffff&primary_color=ffffff"></iframe>
+      </div>
+    </div>
+  </section>
 
-<section class="step" data-id="fim-clube">
-  <img class="mono-fim" src="assets/monogram-black.png" alt="">
-  <h2>Começa por <em>aqui</em>.</h2>
-  <p class="d">1. Entra no Clube Viver de Eventos, é gratuito.<br>2. Lá dentro, assiste à masterclass <em style="font-family:var(--serif)">Por onde começar</em>.<br>Quando terminares, envia-me mensagem por lá se tiveres alguma dúvida. Vou-te ajudar rumo a viver de eventos.</p>
-  <a class="cta" href="https://clube-viver-de-eventos.circle.so/c/comeca-aqui">Entrar no Clube gratuito</a>
-</section>
+  <section class="ecra" data-id="fim-code" data-tipo="fim" data-destino="code">
+    <div class="bloco largo">
+      <div class="topo-code">
+        <div>
+          <p class="kicker code">CODE · CERTIFICAÇÃO EBS</p>
+          <h2 class="pergunta">Parece que estás pronta para te tornares <em>profissional</em>.</h2>
+          <p class="texto">Pelo que me contaste, o CODE é o caminho certo para ti: é a certificação da EBS para criares o teu negócio de eventos do zero. Antes disso gostava de te conhecer melhor e perceber se preenches os pré-requisitos para fazeres parte da nova era de profissionais que está a mudar o mundo dos eventos em Portugal.</p>
+          <p class="texto">Marca aqui e vamos falar. Escolhe o dia e a hora que te dão mais jeito. No fim recebes um convite para adicionares a marcação ao teu calendário (Google, iPhone ou Android).</p>
+        </div>
+        <div class="retrato"><img src="assets/code.jpg" alt="Adriana CheiraFesta" loading="lazy"></div>
+      </div>
+      <div class="agenda" id="agenda-code">
+        <iframe title="Marcar a conversa" loading="lazy" data-src="https://calendly.com/cheirafesta/sessao-individual?hide_gdpr_banner=1&hide_landing_page_details=1&background_color=ffffff&text_color=111110&primary_color=2E3A2C"></iframe>
+      </div>
+      <p class="texto">Se preferires ver tudo primeiro, o CODE está aqui.</p>
+      <div class="acoes"><a class="btn code" id="cta-code" href="https://olacheirafesta.github.io/code">Conhecer o CODE</a></div>
+    </div>
+  </section>
 
-</div>
+  <section class="ecra" data-id="fim-clube" data-tipo="fim" data-destino="clube">
+    <div class="bloco">
+      <div class="capa">
+        <img src="assets/clube.png" alt="" loading="lazy">
+        <img class="selo" src="assets/clube-logo.png" alt="Clube Viver de Eventos">
+      </div>
+      <h2 class="pergunta">Começa por <em>aqui</em>.</h2>
+      <ul class="lista">
+        <li>Entra no Clube Viver de Eventos, é gratuito.</li>
+        <li>Lá dentro, assiste à masterclass “Por onde começar”.</li>
+      </ul>
+      <p class="texto">Quando terminares, envia-me mensagem por lá se tiveres alguma dúvida. Vou-te ajudar rumo a viver de eventos.</p>
+      <div class="acoes"><a class="btn clube" href="https://clube-viver-de-eventos.circle.so/c/comeca-aqui">Entrar no Clube gratuito</a></div>
+    </div>
+  </section>
+
+</main>
+
+<button class="voltar" id="voltar" type="button" aria-label="Voltar à pergunta anterior" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 20V5M5 12l7-7 7 7"/></svg>
+</button>
 
 <script>
-const AGENDA_URL="https://calendly.com/cheirafesta/sessao-individual?hide_gdpr_banner=1&embed_domain=olacheirafesta.github.io&embed_type=Inline"; // colar aqui o link do Calendly / Google Appointment quando existir
-const R={ramo:null,respostas:{},investimento:null,destino:null};
-const Q=new URLSearchParams(location.search);
-const SID=Math.random().toString(36).slice(2,12);
-const T=new Set();
-function track(ev,det){
-  if(T.has(ev+(det||'')))return; T.add(ev+(det||''));
-  fetch('https://ebs-webhooks.vercel.app/api/funil-evento',{method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({sid:SID,evento:ev,detalhe:det||'',utm_source:Q.get('utm_source')||''})}).catch(()=>{});
-}
-track('abriu');
-const SEQ=['inicio','nome','email','telefone','instagram','divisor'];
-const TOTAL=11; // aprox. p/ barra de progresso
-let hist=['inicio'];
-let curId='inicio';
+(function(){
+  'use strict';
+  var ENDPOINT = 'https://ebs-webhooks.vercel.app/api/candidatura';
+  var EVENTOS = 'https://ebs-webhooks.vercel.app/api/funil-evento';
+  var CODE_ESCOLHER = 'https://olacheirafesta.github.io/code/escolher.html';
+  var CODE_INFO = 'https://olacheirafesta.github.io/code';
 
-function el(id){return document.querySelector(`[data-id="${id}"]`)}
-function atual(){return el(curId)}
-const DARK=['inicio','fim-call','fim-code','fim-clube'];
-function go(id){
-  if(id===curId&&el(id).classList.contains('on'))return;
-  const a=el(curId); curId=id;
-  if(a&&a!==el(id)){a.classList.remove('on');a.classList.add('out')}
-  const n=el(id);
-  setTimeout(()=>{
-    document.querySelectorAll('.step').forEach(x=>{x.classList.remove('out');if(x!==n)x.classList.remove('on')});
-    n.classList.add('on');const i=n.querySelector('input,textarea');if(i&&window.innerWidth>560)i.focus();
-  },220);
-  if(hist[hist.length-1]!==id)hist.push(id);
-  if(id==='divisor'){
-    const gv=k=>{const e=document.querySelector('[data-id="'+k+'"] input');return e?e.value:''};
-    const nm=gv('nome'),em=gv('email'),tl=gv('telefone');
-    track('dados_completos',(nm+' · '+em+' · '+tl).slice(0,180));
+  var Q = new URLSearchParams(location.search);
+  var SID = Math.random().toString(36).slice(2, 12);
+  var jaVisto = {};
+  function utm(k){ return Q.get(k) || ''; }
+  function track(evento, detalhe){
+    var chave = evento + (detalhe || '');
+    if (jaVisto[chave]) return;
+    jaVisto[chave] = 1;
+    try {
+      fetch(EVENTOS, {method:'POST', headers:{'Content-Type':'application/json'}, keepalive:true,
+        body: JSON.stringify({sid:SID, evento:evento, detalhe:(detalhe||'').slice(0,180), utm_source:utm('utm_source')})}).catch(function(){});
+    } catch(e){}
   }
-  if(!id.startsWith('fim')&&id!=='inicio')track('passo',id);
-  document.getElementById('prog').style.width=Math.min(100,Math.round(hist.length/TOTAL*100))+'%';
-  if(id.startsWith('fim'))document.getElementById('prog').style.width='100%';
-  document.body.classList.toggle('dark',DARK.includes(id));
-  document.querySelector('.back').style.display=(id==='inicio'||id.startsWith('fim'))?'none':'flex';
-}
-function voltar(){if(hist.length<2)return;hist.pop();const id=hist.pop();go(id)}
-function next(){
-  const id=atual().dataset.id;
-  if(id==='inicio')track('comecou');
-  const i=SEQ.indexOf(id);
-  if(i>-1&&i<SEQ.length-1)go(SEQ[i+1]);
-}
-function v(id){return document.getElementById(id).value.trim()}
-function erro(step,mostra){const e=atual().querySelector('.err');if(e)e.style.display=mostra?'block':'none'}
-function valida(campo,regra){
-  const t=v(campo);let ok=false;
-  if(regra==='email')ok=/.+@.+\..+/.test(t);
-  else if(regra==='tel')ok=t.replace(/\D/g,'').length>=9;
-  else ok=t.length>=regra;
-  erro(null,!ok); if(ok)next();
-}
-function txt(campo,key,dest){const t=v(campo);erro(null,t.length<3);if(t.length>2){R.respostas[key]=t;go(dest)}}
-function impede(resposta,rota){R.respostas.impede=resposta.trim();rota==='a4'?go('a4'):fim('clube','fim-clube')}
-function fim(destino,ecra){R.destino=destino;track('concluiu',destino);enviar();go(ecra);
-  if(ecra==='fim-code'){const b=document.getElementById('cta-code');
-    if(R.investimento==='pronto'||R.investimento==='plano'){b.href='https://olacheirafesta.github.io/code/escolher.html';b.textContent='Escolher como pagar'}
-    else{b.href='https://olacheirafesta.github.io/code';b.textContent='Conhecer o CODE'}}
-  if(ecra==='fim-call'){const ag=document.getElementById('agenda');
-    if(AGENDA_URL){ag.innerHTML='<iframe src="'+AGENDA_URL+'" style="width:100%;height:640px;border:0;background:#fff" loading="lazy"></iframe>'}
-    else{ag.innerHTML='<p class="d">Vou analisá-la com atenção e entro em contacto contigo nas próximas 48 horas para marcarmos a conversa.</p>'}}}
-function enviar(){
-  const p={nome:v('f-nome'),email:v('f-email'),telefone:v('f-telefone'),instagram:v('f-instagram'),
-    ramo:R.ramo,respostas:R.respostas,investimento:R.investimento,destino:R.destino,
-    utm_source:Q.get('utm_source')||'',utm_medium:Q.get('utm_medium')||'',utm_campaign:Q.get('utm_campaign')||''};
-  fetch('https://ebs-webhooks.vercel.app/api/candidatura',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}).catch(()=>{});
-}
-// se algo rebentar a alguém que está a preencher, queremos saber onde e o quê
-function avaria(msg){
-  try{
-    fetch('https://ebs-webhooks.vercel.app/api/funil-evento',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({sid:SID,evento:'avaria',detalhe:(curId+' | '+msg).slice(0,180),utm_source:Q.get('utm_source')||''})}).catch(()=>{});
-  }catch(e){}
-}
-window.addEventListener('error',e=>avaria((e.message||'erro')+' @'+(e.lineno||'?')));
-window.addEventListener('unhandledrejection',e=>avaria('promessa: '+(e.reason&&e.reason.message||e.reason||'')));
+  /* se algo rebentar a alguem que esta a preencher, queremos saber onde e o que */
+  function avaria(msg){ track('avaria', atual + ' | ' + msg); }
+  window.addEventListener('error', function(e){ avaria((e.message||'erro') + ' @' + (e.lineno||'?')); });
+  window.addEventListener('unhandledrejection', function(e){ avaria('promessa: ' + ((e.reason && e.reason.message) || e.reason || '')); });
+  track('abriu');
 
-// a mensagem vermelha desaparece assim que a pessoa corrige
-document.addEventListener('input',e=>{
-  if(e.target.matches('input,textarea')){const s=e.target.closest('.step');const d=s&&s.querySelector('.err');if(d)d.style.display='none'}
-});
+  var base = ['inicio','nome','email','telefone','instagram','divisor'];
+  var ramoA = ['a1','a2','a3','a4'];
+  var ramoB = ['b1','b2','b3','b4','b5'];
+  var seguinte = {nome:'email', email:'telefone', telefone:'instagram', instagram:'divisor', a2:'a3', b1:'b2', b3:'b4', b4:'b5'};
 
-document.addEventListener('keydown',e=>{
-  if(e.key!=='Enter')return;
-  const s=atual();const id=s.dataset.id;
-  if(e.target.tagName==='TEXTAREA'&&!e.metaKey&&!e.ctrlKey)return;
-  const btn=s.querySelector('.btn');if(btn){e.preventDefault();btn.click()}
-});
+  var ecras = {};
+  [].forEach.call(document.querySelectorAll('.ecra'), function(s){ ecras[s.dataset.id] = s; });
+  var barra = document.getElementById('barra');
+  var progresso = barra.parentNode;
+  var btnVoltar = document.getElementById('voltar');
+
+  var dados = {nome:'', email:'', telefone:'', instagram:'', ramo:'', respostas:{}, investimento:'', destino:''};
+  var percurso = [];
+  var atual = 'inicio';
+  var enviadoFinal = false, enviadoParcial = '';
+
+  function guarda(caminho, valor){
+    if (!caminho) return;
+    if (caminho.indexOf('respostas.') === 0) dados.respostas[caminho.slice(10)] = valor;
+    else dados[caminho] = valor;
+  }
+
+  function total(){ return dados.ramo === 'B' ? base.length + ramoB.length + 1 : base.length + ramoA.length + 1; }
+
+  function posicao(id){
+    var i = base.indexOf(id);
+    if (i > -1) return i;
+    var r = dados.ramo === 'B' ? ramoB : ramoA;
+    i = r.indexOf(id);
+    if (i > -1) return base.length + i;
+    return total() - 1;
+  }
+
+  function pinta(id){
+    var t = total(), n = posicao(id);
+    var pct = Math.max(5, Math.round(((n + 1) / t) * 100));
+    barra.style.width = pct + '%';
+    progresso.setAttribute('aria-valuenow', pct);
+    var passo = ecras[id].querySelector('.passo');
+    if (passo) passo.textContent = ('0' + (n + 1)).slice(-2) + ' / ' + t;
+  }
+
+  function abre(id, comAnimacao){
+    var anterior = ecras[atual], alvo = ecras[id];
+    if (!alvo) return;
+    if (anterior && anterior !== alvo && comAnimacao !== false){
+      var sai = anterior;
+      sai.classList.remove('on');
+      sai.classList.add('sai');
+      setTimeout(function(){ sai.classList.remove('sai'); }, 280);
+    } else if (anterior) {
+      anterior.classList.remove('on', 'sai');
+    }
+    atual = id;
+    document.body.classList.toggle('escuro', alvo.dataset.escuro === '1');
+    document.body.classList.toggle('sem-marca', alvo.dataset.semMarca === '1');
+    pinta(id);
+    alvo.classList.remove('sai');
+    alvo.classList.add('on');
+    window.scrollTo(0, 0);
+    var tipo = alvo.dataset.tipo;
+    btnVoltar.hidden = (tipo === 'abertura' || tipo === 'fim' || percurso.length === 0);
+    var campo = alvo.querySelector('input, textarea');
+    if (campo && matchMedia('(min-width:640px)').matches) { try { campo.focus({preventScroll:true}); } catch(e){ campo.focus(); } }
+    if (tipo === 'fim') final(alvo);
+    else if (id !== 'inicio') track('passo', id);
+    if (id === 'divisor') track('dados_completos', dados.nome + ' · ' + dados.email + ' · ' + dados.telefone);
+  }
+
+  function vai(id){
+    percurso.push(atual);
+    abre(id);
+  }
+
+  document.getElementById('voltar').addEventListener('click', function(){
+    var anterior = percurso.pop();
+    if (!anterior) return;
+    abre(anterior);
+  });
+
+  /* ---- opções ---- */
+  [].forEach.call(document.querySelectorAll('.opcoes button'), function(b){
+    b.addEventListener('click', function(){
+      var secao = b.closest('.ecra');
+      [].forEach.call(secao.querySelectorAll('.opcoes button'), function(o){ o.classList.remove('escolhida'); });
+      b.classList.add('escolhida');
+      if (b.dataset.ramo) dados.ramo = b.dataset.ramo;
+      var rot = b.querySelector('.rot').textContent.trim();
+      guarda(secao.dataset.guarda, b.dataset.val || rot);
+      setTimeout(function(){ vai(b.dataset.ir); }, 130);
+    });
+  });
+
+  /* ---- abertura ---- */
+  [].forEach.call(document.querySelectorAll('[data-tipo="abertura"] [data-ir]'), function(b){
+    b.addEventListener('click', function(){ track('comecou'); vai(b.dataset.ir); });
+  });
+
+  /* ---- campos ---- */
+  function valida(campo){
+    var el = campo.querySelector('input, textarea');
+    var v = el.value.trim();
+    var regra = campo.dataset.regra, ok;
+    if (regra === 'email') ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    else if (regra === 'telefone') ok = v.replace(/[^0-9]/g, '').length >= 9;
+    else if (regra === 'instagram') ok = v.replace(/[@\s]/g, '').length >= 2;
+    else ok = v.length >= 2;
+    campo.classList.toggle('mal', !ok);
+    campo.querySelector('.erro').hidden = ok;
+    if (!ok) { el.focus(); return null; }
+    if (regra === 'instagram' && v.charAt(0) !== '@' && v.indexOf('http') !== 0) v = '@' + v.replace(/^@+/, '');
+    el.value = v;
+    return v;
+  }
+
+  [].forEach.call(document.querySelectorAll('[data-tipo="campo"] form'), function(f){
+    var secao = f.closest('.ecra');
+    var campo = f.querySelector('.campo');
+    var el = campo.querySelector('input, textarea');
+    f.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var v = valida(campo);
+      if (v === null) return;
+      guarda(campo.dataset.guarda, v);
+      if (secao.dataset.id === 'instagram') parcial();
+      vai(seguinte[secao.dataset.id]);
+    });
+    el.addEventListener('input', function(){
+      if (campo.classList.contains('mal')) { campo.classList.remove('mal'); campo.querySelector('.erro').hidden = true; }
+    });
+    if (el.tagName === 'TEXTAREA') {
+      el.addEventListener('keydown', function(ev){
+        if (ev.key === 'Enter' && !ev.shiftKey) { ev.preventDefault(); f.dispatchEvent(new Event('submit', {cancelable:true})); }
+      });
+    }
+  });
+
+  /* ---- teclado nas escolhas ---- */
+  document.addEventListener('keydown', function(ev){
+    var secao = ecras[atual];
+    if (!secao || secao.dataset.tipo !== 'escolha') return;
+    var n = parseInt(ev.key, 10);
+    if (!n) return;
+    var botoes = secao.querySelectorAll('.opcoes button');
+    if (botoes[n - 1]) { ev.preventDefault(); botoes[n - 1].click(); }
+  });
+
+  /* ---- finais ---- */
+  function final(secao){
+    dados.destino = secao.dataset.destino;
+    track('concluiu', dados.destino);
+    if (secao.dataset.id === 'fim-code') {
+      var cta = document.getElementById('cta-code');
+      if (dados.investimento === 'info') { cta.textContent = 'Conhecer o CODE'; cta.href = CODE_INFO; }
+      else { cta.textContent = 'Escolher como pagar'; cta.href = CODE_ESCOLHER; }
+    }
+    var quadro = secao.querySelector('iframe[data-src]');
+    if (quadro) { quadro.src = quadro.dataset.src; quadro.removeAttribute('data-src'); }
+    envia(false);
+  }
+
+  function corpo(parcialFlag){
+    return JSON.stringify({
+      nome: dados.nome, email: dados.email, telefone: dados.telefone, instagram: dados.instagram,
+      ramo: dados.ramo, respostas: dados.respostas, investimento: dados.investimento,
+      destino: dados.destino, parcial: parcialFlag, enviado_em: new Date().toISOString(),
+      utm_source: utm('utm_source'), utm_medium: utm('utm_medium'), utm_campaign: utm('utm_campaign')
+    });
+  }
+
+  function envia(parcialFlag){
+    if (enviadoFinal || !dados.email) return;
+    if (!parcialFlag) enviadoFinal = true;
+    try {
+      fetch(ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'}, body: corpo(parcialFlag), keepalive:true, mode:'cors'}).catch(function(){});
+    } catch(e){}
+  }
+
+  /* salvaguarda: quem dá os contactos e desiste a meio não se perde */
+  function parcial(){ enviadoParcial = atual; envia(true); }
+  window.addEventListener('pagehide', function(){
+    if (enviadoFinal || !dados.email || enviadoParcial === atual) return;
+    enviadoParcial = atual;
+    envia(true);
+  });
+
+  var pedido = (location.hash.match(/ecra=([a-z0-9-]+)/i) || [])[1];
+  if (pedido && ecras[pedido]) {
+    if (pedido.charAt(0) === 'b') dados.ramo = 'B';
+    else if (pedido.charAt(0) === 'a') dados.ramo = 'A';
+    abre(pedido, false);
+  } else {
+    abre('inicio', false);
+  }
+})();
 </script>
 </body>
 </html>
