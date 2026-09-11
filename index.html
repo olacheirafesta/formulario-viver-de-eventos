@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Viver de Eventos · Event Business School</title>
 <meta name="description" content="Responde a estas perguntas para eu perceber em que momento estás. No fim, mostro-te o passo certo para ti.">
+<!-- Meta Pixel (Píxel de Adriana - EBS Novo) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','641108990769540');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=641108990769540&ev=PageView&noscript=1" alt=""></noscript>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Red+Hat+Display:wght@300;400;500&display=swap" rel="stylesheet">
@@ -538,6 +545,10 @@ body.escuro .voltar:hover{border-color:var(--papel)}
   function final(secao){
     dados.destino = secao.dataset.destino;
     track('concluiu', dados.destino);
+    /* Lead para a Meta: só candidaturas reais (com email), nunca a pre-visualizacao #ecra= */
+    if (dados.email && !enviadoFinal && window.fbq) {
+      try { fbq('track', 'Lead', {content_name: 'Formulario Viver de Eventos', content_category: dados.destino}); } catch(e){}
+    }
     var quadro = secao.querySelector('iframe[data-src]');
     if (quadro) { quadro.src = quadro.dataset.src; quadro.removeAttribute('data-src'); }
     envia(false);
