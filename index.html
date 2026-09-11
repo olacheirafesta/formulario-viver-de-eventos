@@ -392,7 +392,15 @@ body.escuro .voltar:hover{border-color:var(--papel)}
   }
   /* se algo rebentar a alguem que esta a preencher, queremos saber onde e o que */
   function avaria(msg){ track('avaria', atual + ' | ' + msg); }
-  window.addEventListener('error', function(e){ avaria((e.message||'erro') + ' @' + (e.lineno||'?')); });
+  /* o browser do Instagram/Facebook injeta scripts proprios que rebentam sozinhos
+     (_AutofillCallbackHandler, "Java object is gone"); nao sao do formulario e nao o afetam */
+  var RUIDO = /_AutofillCallbackHandler|Java object is gone|webkit\.messageHandlers|fbq|fbevents|Script error\.?$/i;
+  window.addEventListener('error', function(e){
+    var msg = e.message || 'erro';
+    var deFora = e.filename && e.filename.indexOf(location.origin) !== 0 && e.filename.indexOf(location.href) !== 0;
+    if (RUIDO.test(msg) || deFora) return;
+    avaria(msg + ' @' + (e.lineno||'?'));
+  });
   window.addEventListener('unhandledrejection', function(e){ avaria('promessa: ' + ((e.reason && e.reason.message) || e.reason || '')); });
   track('abriu');
 
