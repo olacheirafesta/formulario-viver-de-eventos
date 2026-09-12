@@ -43,11 +43,13 @@ placeholder: Escreve aqui…
 
 ## a3 · escolha
 O que te impede de *começar*?
-- Não sei por onde começar → fim-clube
-- Medo de trocar o certo pelo incerto → fim-clube
-- Medo de não ter clientes → fim-clube
-- Todas as opções anteriores → fim-clube
+- Não sei por onde começar → a4
+- Medo de trocar o certo pelo incerto → a4
+- Medo de não ter clientes → a4
+- Todas as opções anteriores → a4
 - Já decidi, só preciso de aprender → a4
+
+⚠ Alterado a 12/09/2026: antes as quatro primeiras iam directas para fim-clube e nunca respondiam ao investimento. Agora **toda a gente passa pelo a4**. Quem responder *neste momento não consigo* é que segue para fim-clube, que é onde a aula gratuita entra.
 
 ## a4 · escolha, com texto de apresentação em cima
 Título: Estás pronta para *investir* em ti, no teu negócio e na tua nova vida?
