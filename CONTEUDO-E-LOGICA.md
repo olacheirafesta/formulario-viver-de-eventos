@@ -53,7 +53,9 @@ O que te impede de *começar*?
 
 ## a4 · escolha, com texto de apresentação em cima
 Título: Estás pronta para *investir* em ti, no teu negócio e na tua nova vida?
-Texto: O primeiro passo para viveres de eventos é tornares-te profissional, para entregares um trabalho de qualidade que atrai interessados. Mas isso sozinho não chega. Se queres mesmo viver de eventos, fazer o que gostas, ser bem paga por isso e ter mais tempo para ti enquanto impactas o dia mais importante da vida das outras pessoas, é essencial criares o teu negócio. É assim que sabes qual o preço certo a cobrar e como ter clientes todos os meses. É isso que ensino no CODE, a certificação em organização e decoração de eventos.
+Texto: O primeiro passo para viveres de eventos é tornares-te profissional, para entregares um trabalho de qualidade que atrai interessados. Mas isso sozinho não chega. Se queres mesmo viver de eventos, fazer o que gostas, ser bem paga por isso e ter mais tempo para ti enquanto impactas o dia mais importante da vida das outras pessoas, é essencial criares o teu negócio. É assim que sabes qual o preço certo a cobrar e como ter clientes todos os meses. É isso que ensino no CODE, a certificação em organização e decoração de eventos. O investimento é de 1.900 €, ou 6 prestações de 350 €.
+
+⚠ Preço acrescentado a 12/09/2026: sem ele, quem respondia *sim, consigo investir já* não sabia de que valor estava a falar, ao contrário do ramo B, que sempre viu os 5.000 € da Mentoria.
 - Sim, consigo investir já → fim-code
 - Sim, com um plano de pagamento → fim-code
 - Sim, mas gostava de ter mais informações → fim-code
