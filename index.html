@@ -141,10 +141,22 @@ body.escuro .voltar:hover{border-color:var(--papel)}
   .capa{margin:0 0 40px;aspect-ratio:16/7}
   .capa .selo{left:28px;bottom:24px;height:52px}
 }
+
+    .nota-entrada{font-size:14px;opacity:.72;margin-top:10px;max-width:46ch}
+
+    .aviso-topo{position:fixed;top:0;left:0;right:0;z-index:60;background:#111110;color:#fff;
+      font-size:11px;letter-spacing:.14em;text-transform:uppercase;line-height:1.5;text-align:center;padding:10px 18px;transition:opacity .25s ease}
+    .aviso-topo[hidden]{display:none}
+    .progresso{top:var(--topo-aviso,34px) !important}
+    body{padding-top:var(--topo-aviso,34px)}
+    @media (max-width:600px){
+      .aviso-topo{font-size:9.5px;letter-spacing:.1em;padding:9px 12px}
+    }
 </style>
 </head>
 <body>
 
+<div class="aviso-topo">Isto é para mulheres que querem criar ou profissionalizar o seu próprio negócio de eventos. Não é uma candidatura a emprego.</div>
 <div class="progresso" role="progressbar" aria-label="Progresso" aria-valuemin="0" aria-valuemax="100" aria-valuenow="5"><i id="barra"></i></div>
 <div class="marca"><img src="data:image/png;base64,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" alt="Event Business School"></div>
 
@@ -203,24 +215,38 @@ body.escuro .voltar:hover{border-color:var(--papel)}
     </form>
   </section>
 
-  <section class="ecra" data-id="divisor" data-tipo="escolha">
+  <section class="ecra" data-id="divisor" data-tipo="escolha" data-guarda="respostas.experiencia">
     <div class="bloco">
-      <h2 class="pergunta">Já fazes eventos para <em>clientes</em>?</h2>
+      <h2 class="pergunta">Já fazes <em>eventos</em>?</h2>
       <ul class="opcoes">
-        <li><button type="button" data-ir="b1" data-ramo="B"><span class="tecla">1</span><span class="rot">Sim, já tenho negócio de eventos</span><span class="caixa"></span></button></li>
-        <li><button type="button" data-ir="a1" data-ramo="A"><span class="tecla">2</span><span class="rot">Ainda não, estou a começar</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="rendimento"><span class="tecla">1</span><span class="rot">Sim, para clientes</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="a1" data-ramo="A"><span class="tecla">2</span><span class="rot">Sim, para família e amigos</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="a1" data-ramo="A"><span class="tecla">3</span><span class="rot">Sim, no meu local de trabalho</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="a2" data-ramo="A"><span class="tecla">4</span><span class="rot">Não, nunca fiz</span><span class="caixa"></span></button></li>
       </ul>
     </div>
   </section>
 
-  <section class="ecra" data-id="a1" data-tipo="escolha" data-guarda="respostas.sonho">
+  <section class="ecra" data-id="rendimento" data-tipo="escolha" data-guarda="respostas.rendimento">
     <div class="bloco">
-      <h2 class="pergunta">Gostavas de ser <em>organizadora</em> de eventos?</h2>
+      <h2 class="pergunta">E esses eventos já representam <em>rendimento</em> para ti?</h2>
       <ul class="opcoes">
-        <li><button type="button" data-ir="a2"><span class="tecla">1</span><span class="rot">Sim, é o que eu quero</span><span class="caixa"></span></button></li>
-        <li><button type="button" data-ir="a2"><span class="tecla">2</span><span class="rot">Estou a explorar a ideia</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="b1" data-ramo="B"><span class="tecla">1</span><span class="rot">Sim, regularmente, já é parte do meu rendimento</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="a1" data-ramo="A"><span class="tecla">2</span><span class="rot">Sim, mas só fiz um ou dois pagos</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="a1" data-ramo="A"><span class="tecla">3</span><span class="rot">Ainda estou numa fase muito inicial e praticamente não faturo</span><span class="caixa"></span></button></li>
       </ul>
     </div>
+  </section>
+
+  <section class="ecra" data-id="a1" data-tipo="campo">
+    <form class="bloco" novalidate>
+      <h2 class="pergunta">Conta-me o <em>último</em> evento que organizaste.</h2>
+      <div class="campo" data-guarda="respostas.ultimo_evento" data-regra="texto">
+        <textarea id="f-a1" name="ultimo_evento" rows="3" placeholder="Escreve aqui…"></textarea>
+        <p class="erro" hidden>Escreve a tua resposta.</p>
+      </div>
+      <div class="acoes"><button type="submit" class="btn">OK</button><span class="dica">Enter ↵</span></div>
+    </form>
   </section>
 
   <section class="ecra" data-id="a2" data-tipo="campo">
@@ -234,15 +260,38 @@ body.escuro .voltar:hover{border-color:var(--papel)}
     </form>
   </section>
 
+  <section class="ecra" data-id="a2b" data-tipo="campo">
+    <form class="bloco" novalidate>
+      <h2 class="pergunta">Porque é <em>agora</em> e não há um ano?</h2>
+      <div class="campo" data-guarda="respostas.porque_agora" data-regra="texto">
+        <textarea id="f-a2b" name="porque_agora" rows="3" placeholder="Escreve aqui…"></textarea>
+        <p class="erro" hidden>Escreve a tua resposta.</p>
+      </div>
+      <div class="acoes"><button type="submit" class="btn">OK</button><span class="dica">Enter ↵</span></div>
+    </form>
+  </section>
+
   <section class="ecra" data-id="a3" data-tipo="escolha" data-guarda="respostas.impede">
     <div class="bloco">
       <h2 class="pergunta">O que te impede de <em>começar</em>?</h2>
       <ul class="opcoes">
-        <li><button type="button" data-ir="a4"><span class="tecla">1</span><span class="rot">Não sei por onde começar</span><span class="caixa"></span></button></li>
-        <li><button type="button" data-ir="a4"><span class="tecla">2</span><span class="rot">Medo de trocar o certo pelo incerto</span><span class="caixa"></span></button></li>
-        <li><button type="button" data-ir="a4"><span class="tecla">3</span><span class="rot">Medo de não ter clientes</span><span class="caixa"></span></button></li>
-        <li><button type="button" data-ir="a4"><span class="tecla">4</span><span class="rot">Todas as opções anteriores</span><span class="caixa"></span></button></li>
-        <li><button type="button" data-ir="a4"><span class="tecla">5</span><span class="rot">Já decidi, só preciso de aprender</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="a3b"><span class="tecla">1</span><span class="rot">Não sei por onde começar</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="a3b"><span class="tecla">2</span><span class="rot">Medo de trocar o certo pelo incerto</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="a3b"><span class="tecla">3</span><span class="rot">Medo de não ter clientes</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="a3b"><span class="tecla">4</span><span class="rot">Todas as opções anteriores</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="a3b"><span class="tecla">5</span><span class="rot">Já decidi, só preciso de aprender</span><span class="caixa"></span></button></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ecra" data-id="a3b" data-tipo="escolha" data-guarda="respostas.quando">
+    <div class="bloco">
+      <h2 class="pergunta">Quando gostavas de ter o teu negócio de eventos a <em>funcionar</em> a sério?</h2>
+      <ul class="opcoes">
+        <li><button type="button" data-ir="a4"><span class="tecla">1</span><span class="rot">O quanto antes, quero começar já</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="a4"><span class="tecla">2</span><span class="rot">No próximo ano</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="a4"><span class="tecla">3</span><span class="rot">Daqui a mais de um ano</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="a4"><span class="tecla">4</span><span class="rot">Ainda estou só a explorar</span><span class="caixa"></span></button></li>
       </ul>
     </div>
   </section>
@@ -306,6 +355,29 @@ body.escuro .voltar:hover{border-color:var(--papel)}
     </form>
   </section>
 
+  <section class="ecra" data-id="b4b" data-tipo="campo">
+    <form class="bloco" novalidate>
+      <h2 class="pergunta">Porque é <em>agora</em> e não há um ano?</h2>
+      <div class="campo" data-guarda="respostas.porque_agora" data-regra="texto">
+        <textarea id="f-b4b" name="porque_agora_b" rows="3" placeholder="Escreve aqui…"></textarea>
+        <p class="erro" hidden>Escreve a tua resposta.</p>
+      </div>
+      <div class="acoes"><button type="submit" class="btn">OK</button><span class="dica">Enter ↵</span></div>
+    </form>
+  </section>
+
+  <section class="ecra" data-id="b4c" data-tipo="escolha" data-guarda="respostas.quando">
+    <div class="bloco">
+      <h2 class="pergunta">Quando gostavas de ter o teu negócio a <em>funcionar</em> como queres?</h2>
+      <ul class="opcoes">
+        <li><button type="button" data-ir="b5"><span class="tecla">1</span><span class="rot">O quanto antes, quero resolver isto já</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="b5"><span class="tecla">2</span><span class="rot">No próximo ano</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="b5"><span class="tecla">3</span><span class="rot">Daqui a mais de um ano</span><span class="caixa"></span></button></li>
+        <li><button type="button" data-ir="b5"><span class="tecla">4</span><span class="rot">Ainda estou só a explorar</span><span class="caixa"></span></button></li>
+      </ul>
+    </div>
+  </section>
+
   <section class="ecra" data-id="b5" data-tipo="escolha" data-guarda="investimento">
     <div class="bloco">
       <p class="kicker">MENTORIA EBS · 12 MESES</p>
@@ -323,12 +395,10 @@ body.escuro .voltar:hover{border-color:var(--papel)}
   <section class="ecra pele-escura" data-id="fim-call" data-tipo="fim" data-destino="call" data-escuro="1">
     <div class="bloco largo">
       <p class="kicker" style="color:rgba(255,255,255,.7)">MENTORIA EBS · CANDIDATURA RECEBIDA</p>
-      <h2 class="pergunta">O teu próximo passo é uma sessão individual comigo, <em>gratuita</em>.</h2>
-      <p class="texto">Recebi a tua candidatura e decidi oferecer-te uma sessão de diagnóstico. São 30 minutos, eu e tu, a olhar para o teu negócio como ele está: o que já funciona, o que está a travar as vendas e qual é o próximo passo a implementar. Sais da conversa a saber o que fazer a seguir.</p>
-      <p class="texto">Escolhe o dia e a hora que te dão mais jeito. No fim recebes um convite para adicionares a marcação ao teu calendário (Google, iPhone ou Android).</p>
-      <div class="agenda" id="agenda">
-        <iframe title="Marcar a conversa" loading="lazy" data-src="https://calendly.com/cheirafesta/sessao-individual?hide_gdpr_banner=1&hide_landing_page_details=1&background_color=111110&text_color=ffffff&primary_color=ffffff"></iframe>
-      </div>
+      <h2 class="pergunta">O teu caso não é começar. É <em>crescer</em>.</h2>
+      <p class="texto">Já fazes eventos e já recebes por isso. O que te falta não é aprender a organizar, é transformar esse trabalho num negócio que te paga todos os meses, com clientes a chegar e preços que te dão lucro.</p>
+      <p class="texto">Vou olhar para as tuas respostas e falo contigo pelo WhatsApp, para o número que me deixaste.</p>
+      <p class="texto">Até já,<br>Adriana</p>
     </div>
   </section>
 
@@ -338,13 +408,11 @@ body.escuro .voltar:hover{border-color:var(--papel)}
         <div>
           <p class="kicker code">CODE · CERTIFICAÇÃO EBS</p>
           <h2 class="pergunta">Parece que estás pronta para te tornares <em>profissional</em>.</h2>
-          <p class="texto">Pelo que me contaste, o CODE é o caminho certo para ti: é a certificação da EBS para criares o teu negócio de eventos do zero. Antes disso gostava de te conhecer melhor e perceber se preenches os pré-requisitos para fazeres parte da nova era de profissionais que está a mudar o mundo dos eventos em Portugal.</p>
-          <p class="texto">Marca aqui e vamos falar. Escolhe o dia e a hora que te dão mais jeito. No fim recebes um convite para adicionares a marcação ao teu calendário (Google, iPhone ou Android).</p>
+          <p class="texto">Pelo que me contaste, o CODE é o caminho certo para ti. É onde crias o teu negócio de eventos de raiz: aprendes a organizar como profissional, fazes o teu primeiro evento a sério e montas o negócio à volta disso, com um método passo a passo e o meu acompanhamento.</p>
+          <p class="texto">Vou ler a tua candidatura com atenção e falo contigo pelo WhatsApp, para o número que me deixaste. Quero perceber-te melhor antes de te dizer seja o que for.</p>
+          <p class="texto">Até já,<br>Adriana</p>
         </div>
         <div class="retrato"><img src="assets/code.jpg" alt="Adriana CheiraFesta" loading="lazy"></div>
-      </div>
-      <div class="agenda" id="agenda-code">
-        <iframe title="Marcar a conversa" loading="lazy" data-src="https://calendly.com/cheirafesta/sessao-individual?hide_gdpr_banner=1&hide_landing_page_details=1&background_color=ffffff&text_color=111110&primary_color=2E3A2C"></iframe>
       </div>
     </div>
   </section>
@@ -407,7 +475,21 @@ body.escuro .voltar:hover{border-color:var(--papel)}
   var base = ['inicio','nome','email','telefone','instagram','divisor'];
   var ramoA = ['a1','a2','a3','a4'];
   var ramoB = ['b1','b2','b3','b4','b5'];
-  var seguinte = {nome:'email', email:'telefone', telefone:'instagram', instagram:'divisor', a2:'a3', b1:'b2', b3:'b4', b4:'b5'};
+
+  var avisoTopo = document.querySelector('.aviso-topo');
+  function ajustaAviso(){
+    var alto = (avisoTopo && !avisoTopo.hidden) ? avisoTopo.offsetHeight : 0;
+    document.documentElement.style.setProperty('--topo-aviso', alto + 'px');
+  }
+  function mostraAviso(id){
+    if (!avisoTopo) return;
+    avisoTopo.hidden = (id !== 'inicio');
+    ajustaAviso();
+  }
+  ajustaAviso();
+  window.addEventListener('resize', ajustaAviso);
+
+  var seguinte = {nome:'email', email:'telefone', telefone:'instagram', instagram:'divisor', a1:'a2', a2:'a2b', a2b:'a3', b1:'b2', b3:'b4', b4:'b4b', b4b:'b4c'};
 
   var ecras = {};
   [].forEach.call(document.querySelectorAll('.ecra'), function(s){ ecras[s.dataset.id] = s; });
@@ -456,6 +538,7 @@ body.escuro .voltar:hover{border-color:var(--papel)}
       anterior.classList.remove('on', 'sai');
     }
     atual = id;
+    mostraAviso(id);
     document.body.classList.toggle('escuro', alvo.dataset.escuro === '1');
     document.body.classList.toggle('sem-marca', alvo.dataset.semMarca === '1');
     pinta(id);
