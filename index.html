@@ -202,7 +202,8 @@ body.escuro .voltar:hover{border-color:var(--papel)}
         <input id="f-telefone" name="telefone" type="tel" placeholder="912 345 678" autocomplete="tel" inputmode="tel">
         <p class="erro" hidden>Escreve um número válido.</p>
       </div>
-      <label class="autoriza"><input type="checkbox" id="f-autoriza" data-versao="v1-2026-09"><span>Autorizo a Adriana CheiraFesta a contactar-me por WhatsApp e email sobre o meu interesse em Viver de Eventos e respetivo acompanhamento. Posso retirar esta autorização a qualquer momento.</span></label>
+      <label class="autoriza"><input type="checkbox" id="f-autoriza" data-versao="v2-2026-09"><span>Autorizo a Adriana CheiraFesta a contactar-me por WhatsApp e email sobre o meu interesse em Viver de Eventos e respetivo acompanhamento. Posso retirar esta autorização a qualquer momento.</span></label>
+      <p class="erro" id="f-autoriza-erro" hidden>Para te conseguir responder, preciso de falar contigo pelo WhatsApp. Marca a caixa para continuares.</p>
       <div class="acoes"><button type="submit" class="btn">OK</button><span class="dica">Enter ↵</span></div>
     </form>
   </section>
@@ -604,6 +605,9 @@ body.escuro .voltar:hover{border-color:var(--papel)}
     return v;
   }
 
+  var cxAut = document.getElementById('f-autoriza');
+  if (cxAut) cxAut.addEventListener('change', function(){ if (cxAut.checked) document.getElementById('f-autoriza-erro').hidden = true; });
+
   [].forEach.call(document.querySelectorAll('[data-tipo="campo"] form'), function(f){
     var secao = f.closest('.ecra');
     var campo = f.querySelector('.campo');
@@ -615,7 +619,9 @@ body.escuro .voltar:hover{border-color:var(--papel)}
       guarda(campo.dataset.guarda, v);
       if (secao.dataset.id === 'telefone') {
         var cx = document.getElementById('f-autoriza');
-        dados.consentimento = { marcado: !!cx.checked, versao: cx.dataset.versao, pagina: location.origin + location.pathname };
+        // A caixa é obrigatória (decisão da Adriana, 25/09): sem ela não te consigo responder, por isso não se avança.
+        if (!cx.checked) { document.getElementById('f-autoriza-erro').hidden = false; cx.focus(); return; }
+        dados.consentimento = { marcado: true, versao: cx.dataset.versao, pagina: location.origin + location.pathname };
       }
       if (secao.dataset.id === 'instagram') parcial();
       vai(seguinte[secao.dataset.id]);
