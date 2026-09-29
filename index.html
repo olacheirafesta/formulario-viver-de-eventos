@@ -651,7 +651,8 @@ body.escuro .voltar:hover{border-color:var(--papel)}
     dados.destino = secao.dataset.destino;
     track('concluiu', dados.destino);
     /* Lead para a Meta: só candidaturas reais (com email), nunca a pre-visualizacao #ecra= */
-    if (dados.email && !enviadoFinal && window.fbq) {
+    /* 29/09 (Adriana): a campanha aprende só com quem pode investir ou quer saber mais (as 3 que compraram responderam assim) */
+    if (dados.email && !enviadoFinal && window.fbq && ['pronto','prestacoes','plano','info'].indexOf(dados.investimento) >= 0) {
       try { fbq('track', 'Lead', {content_name: 'Formulario Viver de Eventos', content_category: dados.destino}); } catch(e){}
     }
     var quadro = secao.querySelector('iframe[data-src]');
