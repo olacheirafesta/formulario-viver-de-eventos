@@ -165,7 +165,7 @@ body.escuro .voltar:hover{border-color:var(--papel)}
 <main id="palco">
 
   <section class="ecra pele-foto" data-id="inicio" data-tipo="abertura" data-escuro="1">
-    <div class="fundo"><img src="assets/entrada.jpg" alt="" fetchpriority="high"></div>
+    <div class="fundo"><img id="capa-img" src="" alt="" fetchpriority="high"></div>
     <div class="bloco">
       <h1 class="pergunta">O caminho para <em>Viver de Eventos</em> começa aqui.</h1>
       <p class="texto forte">Responde a estas perguntas para eu perceber em que momento estás. No fim, mostro-te o passo certo para ti. Demora menos de 2 minutos.</p>
@@ -463,7 +463,14 @@ body.escuro .voltar:hover{border-color:var(--papel)}
     avaria(msg + ' @' + (e.lineno||'?'));
   });
   window.addEventListener('unhandledrejection', function(e){ avaria('promessa: ' + ((e.reason && e.reason.message) || e.reason || '')); });
-  track('abriu');
+  // Teste A/B da capa (Marketing com a Adriana, 01/10): metade das visitas vê cada foto; a variante fica no 'abriu' (capa-1 / capa-2).
+  var CAPAS = { 'capa-1': {src: 'assets/capa-1.jpg', pos: '50% 22%'}, 'capa-2': {src: 'assets/capa-2.jpg', pos: '50% 30%'} };
+  var capa = null;
+  try { capa = localStorage.getItem('ebs_capa'); } catch(e){}
+  if (!CAPAS[capa]) { capa = Math.random() < 0.5 ? 'capa-1' : 'capa-2'; try { localStorage.setItem('ebs_capa', capa); } catch(e){} }
+  var capaImg = document.getElementById('capa-img');
+  if (capaImg) { capaImg.src = CAPAS[capa].src; capaImg.style.objectPosition = CAPAS[capa].pos; }
+  track('abriu', capa);
 
   var base = ['inicio','nome','email','telefone','divisor'];
   var ramoA = ['a1','a2','a3','a4'];
