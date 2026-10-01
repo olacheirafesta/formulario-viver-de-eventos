@@ -104,7 +104,9 @@ form.bloco{margin:0}
 .fundo img{display:block;width:100%;height:100%;object-fit:cover}
 .fundo::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,16,.9) 0%,rgba(17,17,16,.66) 46%,rgba(17,17,16,.28) 100%)}
 .pele-foto .bloco{position:relative;z-index:1}
-@media (max-width:767px){.ecra.pele-foto[data-id="inicio"]{padding-bottom:20vh}}
+/* Capa (Adriana, 01/10): texto, botão e caixa em cima, com a sombra a vir de cima, como nas capas do carrossel. */
+.ecra.pele-foto[data-id="inicio"]{justify-content:flex-start;padding-top:calc(var(--topo-aviso,0px) + 9vh)}
+.pele-foto[data-id="inicio"] .fundo::after{background:linear-gradient(to bottom,rgba(17,17,16,.88) 0%,rgba(17,17,16,.62) 38%,rgba(17,17,16,.12) 72%,rgba(17,17,16,0) 100%)}
 .pele-escura{background:var(--tinta);color:var(--papel)}
 .pele-foto .texto,.pele-escura .texto{color:rgba(255,255,255,.92)}
 .pele-foto .btn,.pele-escura .btn{background:var(--papel);color:var(--tinta)}
@@ -465,14 +467,10 @@ body.escuro .voltar:hover{border-color:var(--papel)}
   });
   window.addEventListener('unhandledrejection', function(e){ avaria('promessa: ' + ((e.reason && e.reason.message) || e.reason || '')); });
   // Teste A/B da capa (Marketing com a Adriana, 01/10): metade das visitas vê cada foto; a variante fica no 'abriu' (capa-1 / capa-2).
-  // 01/10 (Adriana): a capa é a fotografia de um evento de outono. Quatro em teste, 1 em cada 4 visitas; a variante fica no 'abriu'.
-  var CAPAS = { 'capa-outono-1': {src: 'assets/capa-outono-1.jpg', pos: '50% 40%'}, 'capa-outono-2': {src: 'assets/capa-outono-2.jpg', pos: '50% 40%'},
-    'capa-outono-3': {src: 'assets/capa-outono-3.jpg', pos: '50% 40%'}, 'capa-outono-4': {src: 'assets/capa-outono-4.jpg', pos: '50% 40%'} };
-  var capa = null;
-  try { capa = localStorage.getItem('ebs_capa'); } catch(e){}
-  if (!CAPAS[capa]) { capa = Object.keys(CAPAS)[Math.floor(Math.random() * 4)]; try { localStorage.setItem('ebs_capa', capa); } catch(e){} }
+  // 01/10 (Adriana): capa única, a fotografia de evento de outono com as flores (capa-outono-1).
+  var capa = 'capa-outono-1';
   var capaImg = document.getElementById('capa-img');
-  if (capaImg) { capaImg.src = CAPAS[capa].src; capaImg.style.objectPosition = CAPAS[capa].pos; }
+  if (capaImg) { capaImg.src = 'assets/capa-outono-1.jpg'; capaImg.style.objectPosition = '50% 60%'; }
   track('abriu', capa);
 
   var base = ['inicio','nome','email','telefone','divisor'];
