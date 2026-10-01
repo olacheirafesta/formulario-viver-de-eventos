@@ -208,17 +208,6 @@ body.escuro .voltar:hover{border-color:var(--papel)}
     </form>
   </section>
 
-  <section class="ecra" data-id="instagram" data-tipo="campo">
-    <form class="bloco" novalidate>
-      <h2 class="pergunta">Qual é a tua conta de <em>Instagram</em>?</h2>
-      <div class="campo" data-guarda="instagram" data-regra="instagram">
-        <input id="f-instagram" name="instagram" type="text" placeholder="@atuaconta" autocapitalize="off" spellcheck="false">
-        <p class="erro" hidden>Escreve o teu @.</p>
-      </div>
-      <div class="acoes"><button type="submit" class="btn">OK</button><span class="dica">Enter ↵</span></div>
-    </form>
-  </section>
-
   <section class="ecra" data-id="divisor" data-tipo="escolha" data-guarda="respostas.experiencia">
     <div class="bloco">
       <h2 class="pergunta">Já fazes <em>eventos</em>?</h2>
@@ -476,7 +465,7 @@ body.escuro .voltar:hover{border-color:var(--papel)}
   window.addEventListener('unhandledrejection', function(e){ avaria('promessa: ' + ((e.reason && e.reason.message) || e.reason || '')); });
   track('abriu');
 
-  var base = ['inicio','nome','email','telefone','instagram','divisor'];
+  var base = ['inicio','nome','email','telefone','divisor'];
   var ramoA = ['a1','a2','a3','a4'];
   var ramoB = ['b1','b2','b3','b4','b5'];
 
@@ -493,7 +482,7 @@ body.escuro .voltar:hover{border-color:var(--papel)}
   ajustaAviso();
   window.addEventListener('resize', ajustaAviso);
 
-  var seguinte = {nome:'email', email:'telefone', telefone:'instagram', instagram:'divisor', a1:'a2', a2:'a2b', a2b:'a3', b1:'b2', b3:'b4', b4:'b4b', b4b:'b4c'};
+  var seguinte = {nome:'email', email:'telefone', telefone:'divisor', a1:'a2', a2:'a2b', a2b:'a3', b1:'b2', b3:'b4', b4:'b4b', b4b:'b4c'};
 
   var ecras = {};
   [].forEach.call(document.querySelectorAll('.ecra'), function(s){ ecras[s.dataset.id] = s; });
@@ -623,7 +612,8 @@ body.escuro .voltar:hover{border-color:var(--papel)}
         if (!cx.checked) { document.getElementById('f-autoriza-erro').hidden = false; cx.focus(); return; }
         dados.consentimento = { marcado: true, versao: cx.dataset.versao, pagina: location.origin + location.pathname };
       }
-      if (secao.dataset.id === 'instagram') parcial();
+      // 01/10 (Adriana): sem a pergunta do Instagram, onde desistiam 1 em cada 5; o envio parcial passa para depois do telefone.
+      if (secao.dataset.id === 'telefone') parcial();
       vai(seguinte[secao.dataset.id]);
     });
     el.addEventListener('input', function(){
