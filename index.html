@@ -66,6 +66,7 @@ form.bloco{margin:0}
 .campo.mal input,.campo.mal textarea{border-bottom-color:var(--suave)}
 .erro{margin:12px 0 0;font-size:14px;color:var(--tinta)}
 .autoriza{display:flex;gap:12px;align-items:flex-start;margin:26px 0 0;max-width:560px;font-size:15px;line-height:1.6;color:var(--tinta);cursor:pointer}
+.pele-foto .autoriza{color:#fff}
 .autoriza input{flex:none;width:18px;height:18px;margin:3px 0 0;accent-color:var(--tinta);cursor:pointer}
 .erro[hidden]{display:none}
 .acoes{display:flex;align-items:center;gap:18px;margin:30px 0 0}
@@ -103,6 +104,7 @@ form.bloco{margin:0}
 .fundo img{display:block;width:100%;height:100%;object-fit:cover}
 .fundo::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,16,.9) 0%,rgba(17,17,16,.66) 46%,rgba(17,17,16,.28) 100%)}
 .pele-foto .bloco{position:relative;z-index:1}
+@media (max-width:767px){.ecra.pele-foto[data-id="inicio"]{padding-bottom:20vh}}
 .pele-escura{background:var(--tinta);color:var(--papel)}
 .pele-foto .texto,.pele-escura .texto{color:rgba(255,255,255,.92)}
 .pele-foto .btn,.pele-escura .btn{background:var(--papel);color:var(--tinta)}
@@ -158,7 +160,7 @@ body.escuro .voltar:hover{border-color:var(--papel)}
 </head>
 <body>
 
-<div class="aviso-topo">Isto é para mulheres que querem criar ou profissionalizar o seu próprio negócio de eventos. Não é uma candidatura a emprego.</div>
+<div class="aviso-topo">Isto é para mulheres que querem criar ou fazer crescer o seu próprio negócio de eventos. Não é uma candidatura de emprego.</div>
 <div class="progresso" role="progressbar" aria-label="Progresso" aria-valuemin="0" aria-valuemax="100" aria-valuenow="5"><i id="barra"></i></div>
 <div class="marca"><img src="data:image/png;base64,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" alt="Event Business School"></div>
 
@@ -167,9 +169,10 @@ body.escuro .voltar:hover{border-color:var(--papel)}
   <section class="ecra pele-foto" data-id="inicio" data-tipo="abertura" data-escuro="1">
     <div class="fundo"><img id="capa-img" src="" alt="" fetchpriority="high"></div>
     <div class="bloco">
-      <h1 class="pergunta">O caminho para <em>Viver de Eventos</em> começa aqui.</h1>
-      <p class="texto forte">Responde a estas perguntas para eu perceber em que momento estás. No fim, mostro-te o passo certo para ti. Demora menos de 2 minutos.</p>
+      <h1 class="pergunta">Descobre qual o próximo passo para <em>Viveres de Eventos</em></h1>
       <div class="acoes"><button type="button" class="btn" data-ir="nome">Começar</button></div>
+      <label class="autoriza"><input type="checkbox" id="f-autoriza" data-versao="v4-2026-10"><span>Li e concordo com a <a href="privacidade.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">política de privacidade</a>.</span></label>
+      <p class="erro" id="f-autoriza-erro" style="color:#FFB4AC;font-weight:700" hidden>Para continuares, marca a caixa da política de privacidade.</p>
     </div>
   </section>
 
@@ -202,8 +205,6 @@ body.escuro .voltar:hover{border-color:var(--papel)}
         <input id="f-telefone" name="telefone" type="tel" placeholder="912 345 678" autocomplete="tel" inputmode="tel">
         <p class="erro" hidden>Escreve um número válido.</p>
       </div>
-      <label class="autoriza"><input type="checkbox" id="f-autoriza" data-versao="v3-2026-09"><span>Li e concordo com a <a href="privacidade.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">política de privacidade</a>.</span></label>
-      <p class="erro" id="f-autoriza-erro" style="color:#C4554D;font-weight:700" hidden>Para continuares, marca a caixa da política de privacidade.</p>
       <div class="acoes"><button type="submit" class="btn">OK</button><span class="dica">Enter ↵</span></div>
     </form>
   </section>
@@ -464,10 +465,12 @@ body.escuro .voltar:hover{border-color:var(--papel)}
   });
   window.addEventListener('unhandledrejection', function(e){ avaria('promessa: ' + ((e.reason && e.reason.message) || e.reason || '')); });
   // Teste A/B da capa (Marketing com a Adriana, 01/10): metade das visitas vê cada foto; a variante fica no 'abriu' (capa-1 / capa-2).
-  var CAPAS = { 'capa-1': {src: 'assets/capa-1.jpg', pos: '50% 22%'}, 'capa-2': {src: 'assets/capa-2.jpg', pos: '50% 30%'} };
+  // 01/10 (Adriana): a capa é a fotografia de um evento de outono. Quatro em teste, 1 em cada 4 visitas; a variante fica no 'abriu'.
+  var CAPAS = { 'capa-outono-1': {src: 'assets/capa-outono-1.jpg', pos: '50% 40%'}, 'capa-outono-2': {src: 'assets/capa-outono-2.jpg', pos: '50% 40%'},
+    'capa-outono-3': {src: 'assets/capa-outono-3.jpg', pos: '50% 40%'}, 'capa-outono-4': {src: 'assets/capa-outono-4.jpg', pos: '50% 40%'} };
   var capa = null;
   try { capa = localStorage.getItem('ebs_capa'); } catch(e){}
-  if (!CAPAS[capa]) { capa = Math.random() < 0.5 ? 'capa-1' : 'capa-2'; try { localStorage.setItem('ebs_capa', capa); } catch(e){} }
+  if (!CAPAS[capa]) { capa = Object.keys(CAPAS)[Math.floor(Math.random() * 4)]; try { localStorage.setItem('ebs_capa', capa); } catch(e){} }
   var capaImg = document.getElementById('capa-img');
   if (capaImg) { capaImg.src = CAPAS[capa].src; capaImg.style.objectPosition = CAPAS[capa].pos; }
   track('abriu', capa);
@@ -580,7 +583,13 @@ body.escuro .voltar:hover{border-color:var(--papel)}
 
   /* ---- abertura ---- */
   [].forEach.call(document.querySelectorAll('[data-tipo="abertura"] [data-ir]'), function(b){
-    b.addEventListener('click', function(){ track('comecou'); vai(b.dataset.ir); });
+    b.addEventListener('click', function(){
+      // 01/10 (Adriana): a caixa da política de privacidade passa para a capa; sem ela não se começa.
+      var cx = document.getElementById('f-autoriza');
+      if (cx && !cx.checked) { document.getElementById('f-autoriza-erro').hidden = false; cx.focus(); return; }
+      if (cx) dados.consentimento = { marcado: true, versao: cx.dataset.versao, pagina: location.origin + location.pathname };
+      track('comecou'); vai(b.dataset.ir);
+    });
   });
 
   /* ---- campos ---- */
@@ -613,12 +622,6 @@ body.escuro .voltar:hover{border-color:var(--papel)}
       var v = valida(campo);
       if (v === null) return;
       guarda(campo.dataset.guarda, v);
-      if (secao.dataset.id === 'telefone') {
-        var cx = document.getElementById('f-autoriza');
-        // A caixa é obrigatória (decisão da Adriana, 25/09): sem ela não te consigo responder, por isso não se avança.
-        if (!cx.checked) { document.getElementById('f-autoriza-erro').hidden = false; cx.focus(); return; }
-        dados.consentimento = { marcado: true, versao: cx.dataset.versao, pagina: location.origin + location.pathname };
-      }
       // 01/10 (Adriana): sem a pergunta do Instagram, onde desistiam 1 em cada 5; o envio parcial passa para depois do telefone.
       if (secao.dataset.id === 'telefone') parcial();
       vai(seguinte[secao.dataset.id]);
