@@ -675,13 +675,44 @@ body.escuro .voltar:hover{border-color:var(--papel)}
     });
   }
 
+  /* 06/10 (Adriana): nenhuma candidatura se perde se a Vercel falhar.
+     1) cópia de reserva direta na Supabase (só insert, sem passar pela Vercel);
+     2) se o webhook falhar, a candidatura fica numa fila neste browser e volta a ser enviada. */
+  var RESERVA = 'https://taoenupjhkwqmvpammir.supabase.co/rest/v1/candidaturas_reserva';
+  var RESERVA_CHAVE = 'sb_publishable_28xyyBUdmemZ7KIR8wzJOQ_dnn3r3h2';
+  var FILA = 'ebs_fila_candidaturas';
+  function reserva(body, parcialFlag){
+    try {
+      fetch(RESERVA, {method:'POST', keepalive:true, mode:'cors',
+        headers:{'Content-Type':'application/json','apikey':RESERVA_CHAVE,'Prefer':'return=minimal'},
+        body: JSON.stringify({parcial: parcialFlag, email: dados.email, dados: JSON.parse(body)})}).catch(function(){});
+    } catch(e){}
+  }
+  function filaLer(){ try { return JSON.parse(localStorage.getItem(FILA) || '[]'); } catch(e){ return []; } }
+  function filaGravar(f){ try { localStorage.setItem(FILA, JSON.stringify(f.slice(-20))); } catch(e){} }
+  function filaJuntar(body){ var f = filaLer(); f.push({body: body, t: Date.now()}); filaGravar(f); }
+  function filaEnviar(){
+    var f = filaLer(); if (!f.length) return;
+    f.forEach(function(item){
+      try {
+        fetch(ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'}, body: item.body, mode:'cors'})
+          .then(function(r){ if (r.ok) filaGravar(filaLer().filter(function(x){ return x.t !== item.t; })); })
+          .catch(function(){});
+      } catch(e){}
+    });
+  }
   function envia(parcialFlag){
     if (enviadoFinal || !dados.email) return;
     if (!parcialFlag) enviadoFinal = true;
+    var body = corpo(parcialFlag);
+    reserva(body, parcialFlag);
     try {
-      fetch(ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'}, body: corpo(parcialFlag), keepalive:true, mode:'cors'}).catch(function(){});
-    } catch(e){}
+      fetch(ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'}, body: body, keepalive:true, mode:'cors'})
+        .then(function(r){ if (!r.ok && !parcialFlag) { filaJuntar(body); setTimeout(filaEnviar, 8000); } })
+        .catch(function(){ if (!parcialFlag) { filaJuntar(body); setTimeout(filaEnviar, 8000); } });
+    } catch(e){ if (!parcialFlag) filaJuntar(body); }
   }
+  setTimeout(filaEnviar, 3000);
 
   /* salvaguarda: quem dá os contactos e desiste a meio não se perde */
   function parcial(){ enviadoParcial = atual; envia(true); }
