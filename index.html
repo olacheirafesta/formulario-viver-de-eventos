@@ -653,10 +653,18 @@ body.escuro .voltar:hover{border-color:var(--papel)}
     /* 05/10 (Adriana): o Lead volta a sair para todas as candidaturas completas, para a Meta ter volume para aprender
        (com o filtro de 29/09 caiu de ~32 para 3-11 por dia e a entrega caiu). Quem pode investir ou quer saber mais
        sai também num evento à parte, CandidaturaQualificada, para passar a otimizar por ele quando houver volume. */
+    /* 13/10 (Adriana): quem pode investir (pronto ou prestações) sai também como SubmitApplication, o evento por que a
+       campanha passa a otimizar. O servidor envia o mesmo evento pelo CAPI com o mesmo event_id; a Meta junta os dois. */
+    if (dados.email && !enviadoFinal) {
+      dados.event_id = 'cand-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
+    }
     if (dados.email && !enviadoFinal && window.fbq) {
       try { fbq('track', 'Lead', {content_name: 'Formulario Viver de Eventos', content_category: dados.destino}); } catch(e){}
       if (['pronto','prestacoes','plano','info'].indexOf(dados.investimento) >= 0) {
         try { fbq('trackCustom', 'CandidaturaQualificada', {content_category: dados.destino, investimento: dados.investimento}); } catch(e){}
+      }
+      if (['pronto','prestacoes'].indexOf(dados.investimento) >= 0) {
+        try { fbq('track', 'SubmitApplication', {}, {eventID: dados.event_id}); } catch(e){}
       }
     }
     var quadro = secao.querySelector('iframe[data-src]');
@@ -671,8 +679,16 @@ body.escuro .voltar:hover{border-color:var(--papel)}
       destino: dados.destino, parcial: parcialFlag, enviado_em: new Date().toISOString(),
       utm_source: utm('utm_source'), utm_medium: utm('utm_medium'), utm_campaign: utm('utm_campaign'),
       utm_content: utm('utm_content'),
-      consentimento: dados.consentimento || { marcado: false }
+      consentimento: dados.consentimento || { marcado: false },
+      event_id: dados.event_id || '', fbp: cookie('_fbp'), fbc: fbc(),
+      event_source_url: location.href.split('#')[0]
     });
+  }
+  /* identificadores da Meta para o evento do servidor (13/10) */
+  function cookie(n){ var m = document.cookie.match('(?:^|; )' + n + '=([^;]*)'); return m ? decodeURIComponent(m[1]) : ''; }
+  function fbc(){
+    var c = cookie('_fbc'); if (c) return c;
+    var id = Q.get('fbclid'); return id ? 'fb.1.' + Date.now() + '.' + id : '';
   }
 
   /* 06/10 (Adriana): nenhuma candidatura se perde se a Vercel falhar.
