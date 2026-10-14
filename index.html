@@ -663,7 +663,7 @@ body.escuro .voltar:hover{border-color:var(--papel)}
       if (['pronto','prestacoes','plano','info'].indexOf(dados.investimento) >= 0) {
         try { fbq('trackCustom', 'CandidaturaQualificada', {content_category: dados.destino, investimento: dados.investimento}); } catch(e){}
       }
-      if (['pronto','prestacoes'].indexOf(dados.investimento) >= 0) {
+      if (['pronto','prestacoes','plano'].indexOf(dados.investimento) >= 0) { /* «plano» = «Sim, com um plano de pagamento» (ramo A), 14/10 */
         try { fbq('track', 'SubmitApplication', {}, {eventID: dados.event_id}); } catch(e){}
       }
     }
